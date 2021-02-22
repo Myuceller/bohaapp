@@ -1,20 +1,17 @@
 <template>
-  <v-app>
-    <img src="" alt="thumbnail">
-    <v-btn>{{state}}</v-btn>
-    <label for="gametitle">{{title}}</label>
-    <br/>
+  <div class="container">
+    <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="">
+    <div id="state">{{state}}</div>
+    <p id="gametitle">{{title}}</p>
     <span class="gameinfo">
-      <icon></icon>
       <span id="players">{{minplayer}}~{{maxplayer}}</span>
       <v-spacer/>
-      <icon></icon>
       <span id="playtime">{{minplaytime}}~{{maxplaytime}}</span>
     </span>
     <div id="gmaetext">
       <p>{{gametext}}</p>
     </div>
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -34,5 +31,24 @@ export default {
 </script>
 
 <style scoped>
-
+img{
+  float:left;
+  left:35px;
+  width:136px;
+  height: 136px;
+}
+#state{
+  float: right;
+  width:65px;
+  height:30px;
+  background: #FFEB00 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+  font-size: 13px;
+  align-self: center;
+}
+#gametitle{
+  font-size: 16px;
+  color:black;
+}
 </style>

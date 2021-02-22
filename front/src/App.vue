@@ -48,8 +48,14 @@ export default {
 };
 </script>
 <style scoped>
+@font-face {
+    font-family: 'gmarcketsans';
+    font-style: bold;
+    font-weight: 800;
+    src: url('./assets/font/GmarketSansTTFBold.ttf') format('truetype');
+  }
 .title{
-  font: normal normal 20px/24px Gmarket Sans;
+  font-family: "gmarcketsans";
   letter-spacing: 1px;
   color: #FFFFFF;
   opacity: 1;

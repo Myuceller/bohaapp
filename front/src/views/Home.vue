@@ -1,20 +1,8 @@
 <template>
   <div class="home">
     <p id="header">샘플텍스트 및 샘플카드</p>
-    <img src="../thumbnail/splendor_t.jpg" alt="">
-    <v-btn rounded color="#FFEB00"><p id="state">{{state}}</p></v-btn>
-    <label for="gametitle">{{title}}</label>
-    <br/>
-    <span class="gameinfo">
-      <icon></icon>
-      <span id="players">{{minplayer}}~{{maxplayer}}</span>
-      <v-spacer/>
-      <icon></icon>
-      <span id="playtime">{{minplaytime}}~{{maxplaytime}}</span>
-    </span>
-    <div id="gmaetext">
-      <p>{{gametext}}</p>
-    </div>
+    <div @click="hello"><GameCard :game="game"></GameCard></div>
+    <GameCard/>
   </div>
 </template>
 
@@ -24,13 +12,18 @@ export default {
   name: 'Home',
   data() {
     return{
-      state:"new",
-      title:"시크릿히틀러",
-      minplayer:4,
-      maxplayer:8,
-      minplaytime:40,
-      maxplaytime:80,
-      gametext:"차원이다른마피아게임 다가와다가와줘베이베"
+      // state:"new",
+      // title:"시크릿히틀러",
+      // minplayer:4,
+      // maxplayer:8,
+      // minplaytime:40,
+      // maxplaytime:80,
+      // gametext:"차원이다른마피아게임 다가와다가와줘베이베"
+    }
+  },
+  methods:{
+    hello(){
+      console.log("hello");
     }
   }
 }
