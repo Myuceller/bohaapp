@@ -1,8 +1,7 @@
 <template>
-  <div class="home">
-    <p id="header">샘플텍스트 및 샘플카드</p>
-    <img src="../thumbnail/splendor_t.jpg" alt="">
-    <v-btn rounded color="#FFEB00"><p id="state">{{state}}</p></v-btn>
+  <v-app>
+    <img src="" alt="thumbnail">
+    <v-btn>{{state}}</v-btn>
     <label for="gametitle">{{title}}</label>
     <br/>
     <span class="gameinfo">
@@ -15,14 +14,12 @@
     <div id="gmaetext">
       <p>{{gametext}}</p>
     </div>
-  </div>
+  </v-app>
 </template>
 
 <script>
-
 export default {
-  name: 'Home',
-  data() {
+  data(){
     return{
       state:"new",
       title:"시크릿히틀러",
@@ -38,24 +35,4 @@ export default {
 
 <style scoped>
 
-#header{
-  top: 148px;
-  left: 26px;
-  width: 189px;
-  height: 24px;
-  text-align: left;
-  font: normal normal bold 20px/24px Apple SD Gothic Neo;
-  letter-spacing: -0.4px;
-  color: #272727;
-  opacity: 1;
-}
-#state{
-  top: 203px;
-  left: 296px;
-  width: 65px;
-  height: 30px;
-  background: #FFEB00 0% 0% no-repeat padding-box;
-  border-radius: 15px;
-  opacity: 1;
-}
 </style>

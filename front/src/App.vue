@@ -7,7 +7,6 @@
           :key="item.title"
           link
           router
-          v-on:click="titlearrange(item)"
           :to="{ name: item.title }"
         >
           <v-list-item-icon>
@@ -19,9 +18,9 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
+    <v-app-bar app color="#3379FF">
+      <v-app-bar-nav-icon color="#FFFFFF" @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title><b class="title">{{ title }}</b></v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
     <v-main>
@@ -34,12 +33,9 @@
 </template>
 
 <script>
-import NavigationBar from "./components/NavigationBar"
+
 export default {
   name: 'App',
-  components:{
-    NavigationBar
-  },
   data(){
     return{
       items: [
@@ -52,14 +48,10 @@ export default {
 };
 </script>
 <style scoped>
-v-list-item-title{
-  font: normal normal bold 20px/24px Gmarket Sans;
+.title{
+  font: normal normal 20px/24px Gmarket Sans;
   letter-spacing: 1px;
   color: #FFFFFF;
-  opacity: 1;
-}
-v-navigation-drawer{
-  background: #3379FF 0% 0% no-repeat padding-box;
   opacity: 1;
 }
 </style>
