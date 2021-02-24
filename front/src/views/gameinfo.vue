@@ -69,30 +69,26 @@ export default {
     width: 136px;
     height: 136px;
     display: inline-block;
-    background: #3379FF 0% 0% no-repeat padding-box;
     border-radius: 7px;
   }
   #headcontainer{
     left: 35px;
     width: 322px;
     height: 136px;
+    margin-top:35px;
   }
   .info{
     position: relative;
-    right: inherit;
     margin-top: 25px;
     margin-bottom: 25px;
-    width: 154px;
-    height: 54px;
-    background-color:#3379FF;
     display:grid;
-    grid-template-columns: 154px 54px;
-    grid-row: auto auto;
     grid-column-gap: 15px;
     grid-row-gap: 15px;
+    grid-template-columns: 154px 154px;
+    grid-template-rows: 54px 54px;
   }
   .infoitem{
-    background-color:#3379FF;
+    background-color:#3379FF;;
     padding:15px;
     border-radius:10px;
     color:#fff;
@@ -102,10 +98,10 @@ export default {
     font-size:16px;
     font-family:sans-serif;
   }
-  #players{
-    float:left;
-  }
   #state{
+    float:left;
+    margin-left:25px;
+    margin-top:25px;
     background: #FFEB00 0% 0% no-repeat padding-box;
     border-radius: 15px;
     color:black;
@@ -119,10 +115,12 @@ export default {
     font: normal normal bold 20px/26px gmarcketsans;
     font-size:20px;
     letter-spacing: -0.4px;
-    color: #3379FF;
     opacity: 1;
   }
   #textcontainer{
     position: relative;
+  }
+  .gameinfo{
+    margin-left: 35px;
   }
 </style>

@@ -5,8 +5,7 @@
     <p id="gametitle">{{title}}</p>
     <span class="gameinfo">
       <span id="players">{{minplayer}}~{{maxplayer}}</span>
-      <v-spacer/>
-      <span id="playtime">{{minplaytime}}~{{maxplaytime}}</span>
+      <span id="playtime"><ion-icon name="time"></ion-icon>{{minplaytime}}~{{maxplaytime}}</span>
     </span>
     <div id="gmaetext">
       <p>{{gametext}}</p>
@@ -31,6 +30,12 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+    font-family: 'gmarcketsans';
+    font-style: bold;
+    font-weight: 800;
+    src: url('../assets/font/GmarketSansTTFBold.ttf') format('truetype');
+  }
 img{
   float:left;
   left:35px;
@@ -46,9 +51,15 @@ img{
   opacity: 1;
   font-size: 13px;
   align-self: center;
+  font-family:"gmarcketsans"
 }
 #gametitle{
   font-size: 16px;
   color:black;
+  font-family:"gmarcketsans";
+}
+.gameinfo{
+  font-family:"gmarcketsans";
+  color:#3379FF;
 }
 </style>
