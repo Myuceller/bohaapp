@@ -1,39 +1,41 @@
 <template>
   <div class="gameinfo">
-    <div id="headcontainer">
-      <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="">
-      <div id="state" class="subinfo">{{state}}</div>
-      <div id="gametitle">{{gametitle}}</div>
+    <div>
+      <div id="headcontainer">
+        <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="">
+        <div id="state" class="subinfo">{{state}}</div>
+        <div id="gametitle">{{gametitle}}</div>
+      </div>
+      <div class="info">
+        <div class="infoitem" id="players">
+          <span class="material-icons">people</span>{{minplayer}}~{{maxplayer}}
+        </div>
+        <div class="infoitem" id="playtime">
+          {{minplaytime}}~{{maxplaytime}}
+        </div>
+        <div class="infoitem" id="genre">
+          {{genre}}
+        </div>
+        <div class="infoitem" id="difficulty">
+          {{difficulty}}
+        </div>
+      </div>
+      <div id="textcontainer">
+        <div>
+          <p style="font-family: 'gmarcketsans'; font-size:18px"><b>게임 간단 설명</b></p>
+          <p>{{gameinst}}</p>
+        </div>
+        <div>
+          <p style="font-family: 'gmarcketsans'; font-size:18px"><b>에디터의 한줄평</b></p>
+          <p style="color:#989898;">에디터 S</p>
+          <p>속느냐 속이느냐 그것이 문제로다</p>
+        </div>
+      </div>
     </div>
-    <div class="info">
-      <div class="infoitem" id="players">
-        {{minplayer}}~{{maxplayer}}
-      </div>
-      <div class="infoitem" id="playtime">
-        {{minplaytime}}~{{maxplaytime}}
-      </div>
-      <div class="infoitem" id="genre">
-        {{genre}}
-      </div>
-      <div class="infoitem" id="difficulty">
-        {{difficulty}}
-      </div>
-    </div>
-    <div id="textcontainer">
-      <div>
-        <p><b>게임 간단 설명</b></p>
-        <p>{{gameinst}}</p>
-      </div>
-      <div>
-        <p><b>에디터의 한줄평</b></p>
-        <p style="color:#989898;">에디터 S</p>
-        <p>속느냐 속이느냐 그것이 문제로다</p>
-      </div>
-      <div>
-        <p class="subinfo">게임룰 설명영상</p>
-        <a href="https://www.youtube.com/watch?v=78Ga9vT3eIE">ㅁㄴㅇㄹ</a>
-        <p class="subinfo">개임 상세 사진</p>
-      </div>
+    <div id="photo">
+      <p class="subinfo">게임룰 설명영상</p>
+      <a href="https://www.youtube.com/watch?v=78Ga9vT3eIE">ㅁㄴㅇㄹ</a>
+      <p class="subinfo">개임 상세 사진</p>
     </div>
   </div>
 </template>
@@ -50,8 +52,9 @@ export default {
       minplaytime:40,
       maxplaytime:80,
       genre:"전략",
-      difficulty:"easy",
-      gameinst:"상대도 속이고 나도 속이고 너도 속이고 그녀도 속이고 모두 속이고 더이상 무엇을 쓸지 모르겠는 그런 텍스트의 게임텍스트"
+      difficulty:"Easy",
+      gameinst:"상대도 속이고 나도 속이고 너도 속이고 그녀도 속이고 모두 속이고 더이상 무엇을 쓸지 모르겠는 그런 텍스트의 게임텍스트",
+      game : this.$route.query.game
     }
   }
 }
@@ -68,7 +71,6 @@ export default {
     float:left;
     width: 136px;
     height: 136px;
-    display: inline-block;
     border-radius: 7px;
   }
   #headcontainer{
@@ -88,7 +90,7 @@ export default {
     grid-template-rows: 54px 54px;
   }
   .infoitem{
-    background-color:#3379FF;;
+    background-color:#3379FF;
     padding:15px;
     border-radius:10px;
     color:#fff;
@@ -96,7 +98,6 @@ export default {
     align-items:center;
     justify-content:center;
     font-size:16px;
-    font-family:sans-serif;
   }
   #state{
     float:left;
@@ -107,20 +108,26 @@ export default {
     color:black;
   }
   #gametitle{
+    display:inline-block;
+    float:right;
     font-size:18px;
-    font-family:"gmarcketsans"
   }
   .subinfo{
     text-align: left;
-    font: normal normal bold 20px/26px gmarcketsans;
     font-size:20px;
     letter-spacing: -0.4px;
     opacity: 1;
+    color:#3379FF;
   }
   #textcontainer{
     position: relative;
   }
   .gameinfo{
-    margin-left: 35px;
+    position:absolute;
+    background-color:#F8F8F8;
+    font-family:"gmarcketsans";
+  }
+  #photo{
+    background-color:#FFFFFF;
   }
 </style>

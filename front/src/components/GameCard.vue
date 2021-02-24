@@ -1,29 +1,26 @@
 <template>
   <div class="container">
     <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="">
-    <div id="state">{{state}}</div>
-    <p id="gametitle">{{title}}</p>
-    <span class="gameinfo">
-      <span id="players">{{minplayer}}~{{maxplayer}}</span>
-      <span id="playtime"><ion-icon name="time"></ion-icon>{{minplaytime}}~{{maxplaytime}}</span>
-    </span>
-    <div id="gmaetext">
-      <p>{{gametext}}</p>
+    <div id="state">{{gameOfChild.state}}</div>
+    <div class="gameinfo">
+      <p id="gametitle">{{gameOfChild.title}}</p>
+      <div>
+        <span id="players"><span class="material-icons">people</span> {{gameOfChild.minplayer}}~{{gameOfChild.maxplayer}}  </span>
+        <span id="playtime"><ion-icon name="time"></ion-icon> {{gameOfChild.minplaytime}}~{{gameOfChild.maxplaytime}}</span>
+      </div>
+      <div>
+        <p id="gametext">{{gameOfChild.gametext}}</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props:["gameOfChild"],
   data(){
     return{
-      state:"new",
-      title:"시크릿히틀러",
-      minplayer:4,
-      maxplayer:8,
-      minplaytime:40,
-      maxplaytime:80,
-      gametext:"차원이다른마피아게임 다가와다가와줘베이베"
+      
     }
   }
 }
@@ -54,12 +51,21 @@ img{
   font-family:"gmarcketsans"
 }
 #gametitle{
+  position:relative;
+  top:15px;
   font-size: 16px;
   color:black;
   font-family:"gmarcketsans";
 }
 .gameinfo{
+  position:relative;
+  left:18px;
+  top:30px;
   font-family:"gmarcketsans";
   color:#3379FF;
+}
+
+#gametext{
+  color:#4E4E4E;
 }
 </style>
