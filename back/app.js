@@ -7,6 +7,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const gameinfoRouter = require('./routes/gameinfo');
+const Mongoose  = require('mongoose');
 
 const app = express();
 
@@ -39,5 +40,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+Mongoose.connect("mongodb+srv://donggyu:aa6831@cluster0.6gpjn.mongodb.net/boardgames?retryWrites=true&w=majority")
+.then(console.log("listening to port 3000"))
+.catch(err=>console.log(err));
 
 module.exports = app;

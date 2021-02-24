@@ -4,14 +4,14 @@
       <div id="headcontainer">
         <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="">
         <div id="state" class="subinfo">{{state}}</div>
-        <div id="gametitle">{{gametitle}}</div>
+        <div id="gametitle">{{game.gametitle}}</div>
       </div>
       <div class="info">
         <div class="infoitem" id="players">
-          <span class="material-icons">people</span>{{minplayer}}~{{maxplayer}}
+          <span class="material-icons">people</span>{{game.minplayer}}~{{game.maxplayer}}
         </div>
         <div class="infoitem" id="playtime">
-          {{minplaytime}}~{{maxplaytime}}
+          {{game.minplaytime}}~{{game.maxplaytime}}
         </div>
         <div class="infoitem" id="genre">
           {{genre}}
@@ -23,7 +23,7 @@
       <div id="textcontainer">
         <div>
           <p style="font-family: 'gmarcketsans'; font-size:18px"><b>게임 간단 설명</b></p>
-          <p>{{gameinst}}</p>
+          <p>{{game.gametext}}</p>
         </div>
         <div>
           <p style="font-family: 'gmarcketsans'; font-size:18px"><b>에디터의 한줄평</b></p>
@@ -45,15 +45,6 @@ export default {
   name: 'gameinfo',
   data(){
     return {
-      state:"new",
-      gametitle:"커맨드 앤 컬러스 나폴레오닉",
-      minplayer:2,
-      maxplayer:4,
-      minplaytime:40,
-      maxplaytime:80,
-      genre:"전략",
-      difficulty:"Easy",
-      gameinst:"상대도 속이고 나도 속이고 너도 속이고 그녀도 속이고 모두 속이고 더이상 무엇을 쓸지 모르겠는 그런 텍스트의 게임텍스트",
       game : this.$route.query.game
     }
   }
