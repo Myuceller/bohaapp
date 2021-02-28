@@ -22,6 +22,9 @@ const gameSchema = new Schema({
   },
   gametext: {
     type:String
+  },
+  state:{
+    type:String
   }
 });
 

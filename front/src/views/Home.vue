@@ -1,7 +1,10 @@
 <template>
   <div class="home">
     <p id="header">샘플텍스트 및 샘플카드</p>
-    <div @click="RouteToGameinfo(game)"><GameCard :gameOfChild="game"></GameCard></div>
+    <div :v-for="game in games">
+      <!-- <div @click="RouteToGameinfo(game)"><GameCard v-bind="game"></GameCard></div> -->
+      <div>{{game}}</div>
+    </div>
   </div>
 </template>
 
@@ -15,17 +18,20 @@ export default {
   },
   data() {
     return{
-      game:[""]
+      games:[""]
     }
   },
   methods:{
-    RouteToGameinfo(game){
-      this.$router.push({name:"GameInfo",query:{game:game}})
+    RouteToGameinfo(gameinfo){
+      this.$router.push({name:"GameInfo",query:{game:gameinfo}})
     },
     loadGames(){
-      this.$http.get("/gameinfo")
+      console.log("loadGames호출");
+      this.$http.get("/game")
       .then(res=>{
-        this.game = res.data.data
+        this.game = res.data;
+        console.log(res);
+        console.log(this.game);
       })
       .catch(err=>{
         console.log(err);
@@ -33,6 +39,7 @@ export default {
     }
   },
   mounted(){
+    console.log("home mounted호출");
     this.loadGames();
   }
 }

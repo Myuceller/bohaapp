@@ -1,15 +1,15 @@
 <template>
   <div class="container">
     <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="">
-    <div id="state">{{gameOfChild.state}}</div>
+    <div id="state">{{gameofchild.state}}</div>
     <div class="gameinfo">
-      <p id="gametitle">{{gameOfChild.title}}</p>
+      <p id="gametitle">{{gameofchild.title}}</p>
       <div>
-        <span id="players"><span class="material-icons">people</span> {{gameOfChild.minplayer}}~{{gameOfChild.maxplayer}}  </span>
-        <span id="playtime"><ion-icon name="time"></ion-icon> {{gameOfChild.minplaytime}}~{{gameOfChild.maxplaytime}}</span>
+        <span id="players"><span class="material-icons">people</span> {{gameofchild.minplayer}}~{{gameofchild.maxplayer}}  </span>
+        <span id="playtime"><ion-icon name="time"></ion-icon> {{gameofchild.minplaytime}}~{{gameofchild.maxplaytime}}</span>
       </div>
       <div>
-        <p id="gametext">{{gameOfChild.gametext}}</p>
+        <p id="gametext">{{gameofchild.gametext}}</p>
       </div>
     </div>
   </div>
@@ -17,11 +17,16 @@
 
 <script>
 export default {
-  props:["gameOfChild"],
+  Props:{
+    gameofchild:Object
+  },
   data(){
     return{
-      
+      game:this.gameofchild
     }
+  },
+  mounted(){
+    console.log("GameCard props:",this.props);
   }
 }
 </script>
