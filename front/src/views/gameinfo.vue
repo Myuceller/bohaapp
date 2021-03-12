@@ -1,16 +1,17 @@
 <template>
-  <div class="gameinfo">
+  <div id="container">
     <div>
-      <div id="headcontainer">
+      <div>
         <img src="../assets/thumbnail/splendor_t.png" alt="">
-        <div id="state" class="subinfo">{{game.state}}</div>
+        <div id="state"><p><b>{{game.state}}</b></p></div>
         <div id="gametitle">{{game.korname}}</div>
       </div>
-      <div class="info">
-        <div class="infoitem" id="players">
-          <span class="material-icons">people</span>{{game.minplayer}}~{{game.maxplayer}}
+      <div class="items">
+        <div class="infoitem" id="players" style="font-size:16px;">
+          <span class="material-icons">people</span><span> {{game.minplayer}}~{{game.maxplayer}}</span>
         </div>
-        <div class="infoitem" id="playtime">
+        <div class="infoitem" id="playtime" style="font-size:16px;">
+          <ion-icon name="time" style="font-size:21px;"></ion-icon>
           {{game.mintime}}~{{game.maxtime}}
         </div>
         <div class="infoitem" id="genre">
@@ -20,14 +21,14 @@
           {{game.difficulty}}
         </div>
       </div>
-      <div id="textcontainer">
+      <div class="expText">
         <div>
-          <p style="font-family: 'gmarcketsans'; font-size:18px"><b>게임 간단 설명</b></p>
-          <p>{{game.gametext}}</p>
+          <p><b>게임 간단 설명</b></p>
+          <p style="font-family:applesdgothic; color:#4E4E4E;">{{game.gametext}}</p>
         </div>
         <div>
-          <p style="font-family: 'gmarcketsans'; font-size:18px"><b>에디터의 한줄평</b></p>
-          <p style="color:#989898;">에디터 S</p>
+          <p><b>에디터의 한줄평</b></p>
+          <p>에디터 S</p>
           <p>속느냐 속이느냐 그것이 문제로다</p>
         </div>
       </div>
@@ -68,84 +69,67 @@ export default {
 <style scoped>
   @font-face {
     font-family: 'gmarcketsans';
-    font-style: bold;
+    font-style: normal;
     font-weight: 800;
-    src: url('../assets/font/GmarketSansTTFBold.ttf') format('truetype');
+    src: url('../assets/font/GmarketSansTTFMedium.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'applesdgothic';
+    font-style: normal;
+    font-weight: 800;
+    src: url('../assets/font/AppleSDGothicNeoEB.ttf') format('truetype');
   }
   img{
-    float: left;
-    float:left;
+    position:relative;
+    top:20px;
     width: 136px;
     height: 136px;
-    border-radius: 10px;
-  }
-  #headcontainer{
-    left: 35px;
-    width: 322px;
-    height: 136px;
-    margin-top:35px;
-  }
-  .info{
-    position: relative;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    display:grid;
-    grid-column-gap: 15px;
-    grid-row-gap: 15px;
-    grid-template-columns: 154px 154px;
-    grid-template-rows: 54px 54px;
-  }
-  .infoitem{
-    background-color:#3379FF;
-    padding:15px;
-    border-radius:10px;
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:16px;
+    border-radius: 5px;
   }
   #state{
+    top:-90px;
     position:relative;
-    text-align: center;
+    background-color: #FFEB00;
+    left:170px;
     width:65px;
-    height: 30px;
-    float:left;
-    font-size:13px;
-    left:25px;
-    top:30px;
-    background: #FFEB00 0% 0% no-repeat padding-box;
+    height:30px;
     border-radius: 15px;
-    color:black;
-    border:1px solid black;
+    text-align: center;
+    padding-top:5px;
+    font-size:13px;
+    font-family: gmarcketsans;
   }
-  #gametitle{
+  #gametitle{ 
     display: inline-block;
-    left:150px;
-    margin-top:50px;
-    margin-left: 10px;
-    width: 180px;
-    height: 50px;
+    position: relative;
+    width:150px;
+    top:-70px;
+    left:170px;
     font-size:18px;
-    border:1px solid black;
+    font-family: gmarcketsans;
+  }
+  .infoitem{
+    top:-40px;
+    display: inline-block;
+    position:relative;
+    padding: 15px 0px;
+    width: 154px;
+    height: 54px;
+    background: #3379FF 0% 0% no-repeat padding-box;
+    border-radius: 7px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: gmarcketsans;
+    color:#FFFFFF;
+    margin-right: 15px;
+    margin-bottom: 15px;
   }
   .subinfo{
-    text-align: left;
-    font-size:20px;
-    letter-spacing: -0.4px;
-    opacity: 1;
+    font-family: gmarcketsans;
     color:#3379FF;
+    font-size:20px;
   }
-  #textcontainer{
-    position: relative;
-  }
-  .gameinfo{
-    position:relative;
-    background-color:#F8F8F8;
-    font-family:"gmarcketsans";
-    border:1px solid black;
-  }
-  #photo{
-    background-color:#FFFFFF;
+  .items{
+    font-size:20px;
   }
 </style>
