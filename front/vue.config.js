@@ -2,6 +2,9 @@ module.exports = {
   transpileDependencies: [
     'vuetify'
   ],
+  devServer: {
+    historyApiFallback: true,
+  },
   outputDir:"../back/public",
   devServer:{
     proxy:{

@@ -19,6 +19,16 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/gameinfo.vue')
     }
+  },
+  {
+    path: '/curation',
+    name:'Curation',
+    component:()=>import("../views/Curation.vue")
+  },
+  {
+    path:'/games',
+    name:'Games',
+    component:()=>import('../views/Games.vue')
   }
 ]
 

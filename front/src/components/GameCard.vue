@@ -1,32 +1,30 @@
 <template>
-  <div class="container">
-    <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="">
-    <div id="state">{{gameofchild.state}}</div>
+  <div id="container">
+    <img src="../assets/thumbnail/splendor_t.png" alt="">
+    <div id="state">{{game.state}}</div> 
     <div class="gameinfo">
-      <p id="gametitle">{{gameofchild.title}}</p>
-      <div>
-        <span id="players"><span class="material-icons">people</span> {{gameofchild.minplayer}}~{{gameofchild.maxplayer}}  </span>
-        <span id="playtime"><ion-icon name="time"></ion-icon> {{gameofchild.minplaytime}}~{{gameofchild.maxplaytime}}</span>
+      <p id="gametitle">{{game.korname}}</p>
+      <div class="play">
+        <span id="players"><span class="material-icons">people</span> {{game.minplayer}}~{{game.maxplayer}}  </span>
+        <span id="playtime"><ion-icon name="time"></ion-icon> {{game.mintime}}~{{game.maxtime}}</span>
       </div>
-      <div>
-        <p id="gametext">{{gameofchild.gametext}}</p>
-      </div>
+      <p id="gametext">{{game.gametext}}</p>
     </div>
+
   </div>
 </template>
 
 <script>
 export default {
-  Props:{
-    gameofchild:Object
-  },
+  props:["game"],
   data(){
     return{
-      game:this.gameofchild
+      // path:"../assets/thumbnail/"+this.game.engname+".png"
     }
   },
   mounted(){
-    console.log("GameCard props:",this.props);
+    // this.path = "../assets/thumbnail/"+this.game.engname+".png";
+    // console.log("GameCard props:",this.path);
   }
 }
 </script>
@@ -39,38 +37,58 @@ export default {
     src: url('../assets/font/GmarketSansTTFBold.ttf') format('truetype');
   }
 img{
+  position: relative;
+  left:14px;
+  z-index: 2;
   float:left;
-  left:35px;
   width:136px;
   height: 136px;
+  margin-right: 18px;
+  border-radius: 10px;
 }
 #state{
   float: right;
+  position: relative;
+  z-index: 2;
+  top:12px;
   width:65px;
   height:30px;
   background: #FFEB00 0% 0% no-repeat padding-box;
   border-radius: 15px;
   opacity: 1;
   font-size: 13px;
-  align-self: center;
+  text-align: center;
+  vertical-align: auto;
   font-family:"gmarcketsans"
 }
 #gametitle{
+  top:19px;
+  left:18px;
   position:relative;
-  top:15px;
   font-size: 16px;
   color:black;
   font-family:"gmarcketsans";
 }
 .gameinfo{
+  top:25px;
   position:relative;
-  left:18px;
-  top:30px;
   font-family:"gmarcketsans";
   color:#3379FF;
+  background-color: #F8F8F8;
+  z-index: 1;
+  border-radius: 10px;
 }
-
 #gametext{
+  display: inline-block;
+  width:145px;
+  height: 35px;
+  left:18px;
+  position:relative;
   color:#4E4E4E;
+  font-size: 13px;
+}
+.play{
+  left:18px;
+  position:relative;
 }
 </style>

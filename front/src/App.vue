@@ -18,10 +18,13 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar app color="#3379FF">
+    <v-app-bar app color="#3379FF" flat>
       <v-app-bar-nav-icon color="#FFFFFF" @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title><b class="title">{{ title }}</b></v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon color="#FFFFFF">mdi-magnify</v-icon>
+      </v-btn>
     </v-app-bar>
     <v-main>
       <v-container fluid>
@@ -40,6 +43,7 @@ export default {
     return{
       items: [
       { title: "Home", icon: "mdi-view-dashboard" },
+      { title: "Curation", icon:"mdi-android-messages"}
     ],
     drawer: false,
     title: "보드게임하자",

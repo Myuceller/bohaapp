@@ -2,22 +2,22 @@
   <div class="gameinfo">
     <div>
       <div id="headcontainer">
-        <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="">
-        <div id="state" class="subinfo">{{state}}</div>
-        <div id="gametitle">{{game.gametitle}}</div>
+        <img src="../assets/thumbnail/splendor_t.png" alt="">
+        <div id="state" class="subinfo">{{game.state}}</div>
+        <div id="gametitle">{{game.korname}}</div>
       </div>
       <div class="info">
         <div class="infoitem" id="players">
           <span class="material-icons">people</span>{{game.minplayer}}~{{game.maxplayer}}
         </div>
         <div class="infoitem" id="playtime">
-          {{game.minplaytime}}~{{game.maxplaytime}}
+          {{game.mintime}}~{{game.maxtime}}
         </div>
         <div class="infoitem" id="genre">
-          {{genre}}
+          {{game.genre}}
         </div>
         <div class="infoitem" id="difficulty">
-          {{difficulty}}
+          {{game.difficulty}}
         </div>
       </div>
       <div id="textcontainer">
@@ -45,8 +45,22 @@ export default {
   name: 'gameinfo',
   data(){
     return {
-      game : this.$route.query.game
+      // game : this.$route.params.game
+      game:{
+        state:"new",
+        korname:"크베들린부르크의 돌팔이 약장수",
+        minplayer:2,
+        maxplayer:4,
+        mintime:30,
+        maxtime:40,
+        genre:"전략",
+        difficulty:"Hard",
+        gametext:"농사짓는 즐거운 게임"
+      }
     }
+  },
+  mounted(){
+    // console.log(this.game)
   }
 }
 </script>
@@ -59,10 +73,11 @@ export default {
     src: url('../assets/font/GmarketSansTTFBold.ttf') format('truetype');
   }
   img{
+    float: left;
     float:left;
     width: 136px;
     height: 136px;
-    border-radius: 7px;
+    border-radius: 10px;
   }
   #headcontainer{
     left: 35px;
@@ -91,17 +106,28 @@ export default {
     font-size:16px;
   }
   #state{
+    position:relative;
+    text-align: center;
+    width:65px;
+    height: 30px;
     float:left;
-    margin-left:25px;
-    margin-top:25px;
+    font-size:13px;
+    left:25px;
+    top:30px;
     background: #FFEB00 0% 0% no-repeat padding-box;
     border-radius: 15px;
     color:black;
+    border:1px solid black;
   }
   #gametitle{
-    display:inline-block;
-    float:right;
+    display: inline-block;
+    left:150px;
+    margin-top:50px;
+    margin-left: 10px;
+    width: 180px;
+    height: 50px;
     font-size:18px;
+    border:1px solid black;
   }
   .subinfo{
     text-align: left;
@@ -114,9 +140,10 @@ export default {
     position: relative;
   }
   .gameinfo{
-    position:absolute;
+    position:relative;
     background-color:#F8F8F8;
     font-family:"gmarcketsans";
+    border:1px solid black;
   }
   #photo{
     background-color:#FFFFFF;

@@ -2,28 +2,34 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const gameSchema = new Schema({
-  KorName: {
+  korname: {
     type:String
   },
-  EngName: {
+  engname: {
     type:String
   },
-  minPlayer: {
+  minplayer: {
     type:Number
   },
-  maxPlayer: {
+  maxplayer: {
     type:Number
   },
-  minTime: {
+  mintime: {
     type:Number
   },
-  maxTime: {
+  maxtime: {
     type:Number
   },
   gametext: {
     type:String
   },
   state:{
+    type:String
+  },
+  genre:{
+    type:String
+  },
+  difficulty:{
     type:String
   }
 });
