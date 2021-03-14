@@ -31,7 +31,7 @@ export default {
   },
   mounted(){
     let gameids = this.$route.params.games;
-    axios.get('http://127.0.0.1:3000/game/some',{
+    this.$http.get('/game/some',{
       params:{
         ids: gameids
       }

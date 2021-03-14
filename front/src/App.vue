@@ -20,7 +20,7 @@
     </v-navigation-drawer>
     <v-app-bar app color="#3379FF" flat>
       <v-app-bar-nav-icon color="#FFFFFF" @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title><b class="title">{{ title }}</b></v-toolbar-title>
+      <v-toolbar-title><b style="color:#FFFFFF; font-family:gmarcketsans">{{ title }}</b></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon>
         <v-icon color="#FFFFFF">mdi-magnify</v-icon>
@@ -58,10 +58,4 @@ export default {
     font-weight: 800;
     src: url('./assets/font/GmarketSansTTFBold.ttf') format('truetype');
   }
-.title{
-  font-family: "gmarcketsans";
-  letter-spacing: 1px;
-  color: #FFFFFF;
-  opacity: 1;
-}
 </style>

@@ -1,14 +1,14 @@
 <template>
   <div id="container">
-    <img src="../assets/thumbnail/splendor_t.png" alt="">
-    <div id="state">{{game.state}}</div> 
+    <img :src="require(`../assets/thumbnail/${game.engname}.png`)" alt="">
+    <div v-if="game.state" id="state" class="gmarcketsansbold">{{game.state}}</div> 
     <div class="gameinfo">
-      <p id="gametitle">{{game.korname}}</p>
-      <div class="play">
-        <span id="players"><span class="material-icons">people</span> {{game.minplayer}}~{{game.maxplayer}}  </span>
+      <p id="gametitle" class="gmarcketsansbold">{{game.korname}}</p>
+      <div class="play gmarcketsansbold">
+        <span id="players"><span class="material-icons">people</span> {{game.minplayer}}~{{game.maxplayer}}   </span>
         <span id="playtime"><ion-icon name="time"></ion-icon> {{game.mintime}}~{{game.maxtime}}</span>
       </div>
-      <p id="gametext">{{game.gametext}}</p>
+      <p id="gametext" class="applesdgothic">{{game.gametext}}</p>
     </div>
 
   </div>
@@ -19,7 +19,6 @@ export default {
   props:["game"],
   data(){
     return{
-      // path:"../assets/thumbnail/"+this.game.engname+".png"
     }
   },
   mounted(){
@@ -30,11 +29,23 @@ export default {
 </script>
 
 <style scoped>
-@font-face {
-    font-family: 'gmarcketsans';
+  @font-face {
+    font-family: 'gmarcketsansbold';
     font-style: bold;
     font-weight: 800;
     src: url('../assets/font/GmarketSansTTFBold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'applesdgothic';
+    font-style: normal;
+    font-weight: 800;
+    src: url('../assets/font/AppleSDGothicNeoEB.ttf') format('truetype');
+  }
+  .gmarcketsansbold{
+    font-family: gmarcketsansbold;
+  }
+  .applesdgothic{
+    font-family: applesdgothic;
   }
 img{
   position: relative;
@@ -54,12 +65,13 @@ img{
   width:65px;
   height:30px;
   background: #FFEB00 0% 0% no-repeat padding-box;
+  padding-top:5.5px;
   border-radius: 15px;
   opacity: 1;
   font-size: 13px;
   text-align: center;
   vertical-align: auto;
-  font-family:"gmarcketsans"
+  text-transform: uppercase;
 }
 #gametitle{
   top:19px;
@@ -67,12 +79,10 @@ img{
   position:relative;
   font-size: 16px;
   color:black;
-  font-family:"gmarcketsans";
 }
 .gameinfo{
   top:25px;
   position:relative;
-  font-family:"gmarcketsans";
   color:#3379FF;
   background-color: #F8F8F8;
   z-index: 1;

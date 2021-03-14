@@ -26,7 +26,7 @@ export default {
     },
     loadGames(){
       console.log("loadGames호출");
-      axios.get("http://127.0.0.1:3000/game")
+      this.$http.get("/game")
       .then(res=>{
         this.games = res.data;
         console.log(res);
@@ -45,11 +45,17 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: 'applesdgothic';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../assets/font/AppleSDGothicNeoB.ttf') format('truetype');
+}
   #header{
     top: 148px;
     width: 189px;
     height: 24px;
-    font: normal normal bold 20px/24px Apple SD Gothic Neo;
+    font: normal normal bold 20px/24px applesdgothic;
     letter-spacing: -0.4px;
     color: #272727;
     opacity: 1;
