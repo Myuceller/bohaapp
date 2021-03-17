@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <img :src="require(`../assets/thumbnail/${game.engname}.png`)" alt="">
-    <div v-if="game.state" id="state" class="gmarcketsansbold">{{game.state}}</div> 
+    <div v-if="game.state" id="state" class="gmarcketsansbold" :style="{backgroundColor:color , color:fontcolor}">{{game.state}}</div> 
     <div class="gameinfo">
       <p id="gametitle" class="gmarcketsansbold">{{game.korname}}</p>
       <div class="play gmarcketsansbold">
@@ -19,11 +19,26 @@ export default {
   props:["game"],
   data(){
     return{
+      color:"#FFEB12",
+      fontcolor:"#272727"
+    }
+  },
+  methods:{
+    changeStateColor(){
+      if(this.game.state == "hot" || this.game.state == "Hot"){
+        this.color = '#FF7227'
+        this.fontcolor = '#FFFFFF'
+      }
+      if(this.game.state == 'best' || this.game.state == 'Best'){
+        this.color = '#337AFF'
+        this.fontcolor = '#FFFFFF'
+      }
     }
   },
   mounted(){
     // this.path = "../assets/thumbnail/"+this.game.engname+".png";
     // console.log("GameCard props:",this.path);
+    this.changeStateColor();
   }
 }
 </script>
@@ -64,7 +79,7 @@ img{
   top:12px;
   width:65px;
   height:30px;
-  background: #FFEB00 0% 0% no-repeat padding-box;
+  /* background: #FFEB00 0% 0% no-repeat padding-box; */
   padding-top:5.5px;
   border-radius: 15px;
   opacity: 1;
@@ -82,14 +97,17 @@ img{
 }
 .gameinfo{
   top:25px;
+  width: 356px;
+  height: 127px;
   position:relative;
   color:#3379FF;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   z-index: 1;
   border-radius: 10px;
 }
 #gametext{
   display: inline-block;
+  top:13px;
   width:145px;
   height: 35px;
   left:18px;
@@ -99,6 +117,7 @@ img{
 }
 .play{
   left:18px;
+  margin-top:18px;
   position:relative;
   display: flex;
   text-align: center;

@@ -4,7 +4,7 @@
       <div>
         <img :src="require(`../assets/thumbnail/${game.engname}.png`)" alt="">
         <div class="background">
-          <div v-if="game.state" id="state"><p><b>{{game.state}}</b></p></div>
+          <div v-if="game.state" id="state" :style="{backgroundColor:color , color:fontcolor}"><p><b>{{game.state}}</b></p></div>
           <div id="gametitle">{{game.korname}}</div>
         </div>
       </div>
@@ -19,7 +19,7 @@
         <div class="infoitem" id="genre">
           {{game.genre}}
         </div>
-        <div class="infoitem" id="difficulty" v-bind:style="{ backgroundColor: color }">
+        <div class="infoitem" id="difficulty" v-bind:style="{ backgroundColor: backcolor }">
           {{game.difficulty}}
         </div>
       </div>
@@ -49,7 +49,9 @@ export default {
   data(){
     return {
       game : this.$route.params.game,
-      color:"#09C761",
+      backcolor:"#09C761",
+      color:"#FFEB12",
+      fontcolor:"#272727"
       // game:{
       //   state:"new",
       //   korname:"로빈슨 크루소:저주받은 섬의 모험",
@@ -66,6 +68,7 @@ export default {
   },
   mounted(){
     this.changeColor();
+    this.changeStateColor();
   },
   computed: {
     computedColor: function () {
@@ -75,13 +78,23 @@ export default {
   methods:{
     changeColor(){
       if(this.game.difficulty == "easy" || this.game.difficulty=="Easy")
-        this.color="#09C761";
+        this.backcolor="#09C761";
       if(this.game.difficulty == "normal" || this.game.difficulty == "Normal")
-        this.color="#FFA412"
+        this.backcolor="#FFA412"
       if(this.game.difficulty == "hard" || this.game.difficulty == "Hard")
-        this.color="#FF432B"
+        this.backcolor="#FF432B"
       if(this.game.difficulty == "expert" || this.game.difficulty == "Expert")
-        this.color="#76058B"
+        this.backcolor="#76058B"
+    },
+    changeStateColor(){
+      if(this.game.state == "hot" || this.game.state == "Hot"){
+        this.color = '#FF7227'
+        this.fontcolor = '#FFFFFF'
+      }
+      if(this.game.state == 'best' || this.game.state == 'Best'){
+        this.color = '#337AFF'
+        this.fontcolor = '#FFFFFF'
+      }
     }
   }
 }
@@ -115,7 +128,6 @@ export default {
   }
   #state{
     position:absolute;
-    background-color: #FFEB00;
     top:63px;
     left:170px;
     width:65px;
