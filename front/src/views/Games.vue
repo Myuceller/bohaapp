@@ -26,12 +26,15 @@ export default {
   },
   methods:{
     RouteToGameinfo(gameinfo){
+      localStorage.setItem("game",gameinfo)
       this.$router.push({name:"GameInfo",params:{game:gameinfo}})
     },
   },
   mounted(){
+    //localStorage.vuex =>games
     let gameids = this.$route.params.games;
-    this.$http.get('/game/some',{
+
+    axios.get('http://127.0.0.1:3000/games/some',{
       params:{
         ids: gameids
       }

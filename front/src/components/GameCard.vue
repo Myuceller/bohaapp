@@ -5,8 +5,8 @@
     <div class="gameinfo">
       <p id="gametitle" class="gmarcketsansbold">{{game.korname}}</p>
       <div class="play gmarcketsansbold">
-        <span id="players"><span class="material-icons">people</span> {{game.minplayer}}~{{game.maxplayer}}   </span>
-        <span id="playtime"><ion-icon name="time"></ion-icon> {{game.mintime}}~{{game.maxtime}}</span>
+        <span class="material-icons" style="font-size:19px;">people</span>  <span>{{game.minplayer}}~{{game.maxplayer}}</span>
+        <ion-icon name="time" style="font-size:19px;"></ion-icon> <span id="playtime">{{game.mintime}}~{{game.maxtime}}</span>
       </div>
       <p id="gametext" class="applesdgothic">{{game.gametext}}</p>
     </div>
@@ -100,5 +100,9 @@ img{
 .play{
   left:18px;
   position:relative;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  font-size:14px;
 }
 </style>

@@ -14,12 +14,12 @@
           <div style="position:relative; display:inline-block; margin:5px;">{{game.minplayer}}~{{game.maxplayer}}</div>
         </div>
         <div class="infoitem" id="playtime" style="font-size:16px;">
-          <ion-icon name="time" style="font-size:21px;"></ion-icon> <span>{{game.mintime}}~{{game.maxtime}}</span>
+          <ion-icon name="time" style="font-size:21px; padding-right:5px;"></ion-icon> <span>{{game.mintime}}~{{game.maxtime}}</span>
         </div>
         <div class="infoitem" id="genre">
           {{game.genre}}
         </div>
-        <div class="infoitem" id="difficulty">
+        <div class="infoitem" id="difficulty" v-bind:style="{ backgroundColor: color }">
           {{game.difficulty}}
         </div>
       </div>
@@ -48,7 +48,8 @@ export default {
   name: 'gameinfo',
   data(){
     return {
-      game : this.$route.params.game
+      game : this.$route.params.game,
+      color:"#09C761",
       // game:{
       //   state:"new",
       //   korname:"로빈슨 크루소:저주받은 섬의 모험",
@@ -58,12 +59,30 @@ export default {
       //   maxtime:40,
       //   genre:"전략",
       //   difficulty:"Hard",
-      //   gametext:"농사짓는 즐거운 게임"
+      //   gametext:"농사짓는 즐거운 게임",
+      //   engname:"robo77"
       // }
     }
   },
   mounted(){
-    // console.log(this.game)
+    this.changeColor();
+  },
+  computed: {
+    computedColor: function () {
+      return this.color;
+    }
+  },
+  methods:{
+    changeColor(){
+      if(this.game.difficulty == "easy" || this.game.difficulty=="Easy")
+        this.color="#09C761";
+      if(this.game.difficulty == "normal" || this.game.difficulty == "Normal")
+        this.color="#FFA412"
+      if(this.game.difficulty == "hard" || this.game.difficulty == "Hard")
+        this.color="#FF432B"
+      if(this.game.difficulty == "expert" || this.game.difficulty == "Expert")
+        this.color="#76058B"
+    }
   }
 }
 </script>
@@ -119,7 +138,7 @@ export default {
   }
   .infoitem{
     position:relative;
-    padding: 12px 0px;
+    display:flex;
     border-radius: 7px;
     text-align: center;
     vertical-align: middle;
@@ -127,9 +146,9 @@ export default {
     justify-content:center;
     background-color: #3379FF;
     color:#FFFFFF;
-
   }
   .items{
+    vertical-align: middle;
     position:absolute;
     top:200px;
     font-size:20px;

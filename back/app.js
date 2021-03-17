@@ -6,10 +6,12 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const gameRouter = require('./routes/game');
+const gameRouter = require('./routes/games');
 const curationRouter = require('./routes/curation');
 const Mongoose  = require('mongoose');
 const cors = require('cors');
+
+const history = require('connect-history-api-fallback');
 
 const app = express();
 
@@ -23,10 +25,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(history());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/game', gameRouter);
+app.use('/games', gameRouter);
 app.use('/curation',curationRouter);
 
 // catch 404 and forward to error handler

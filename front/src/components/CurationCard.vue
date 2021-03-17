@@ -22,7 +22,7 @@ export default {
   },
   mounted(){
     console.log("curation Props:",this.curation)
-    this.$http.get("/game/some",{
+    axios.get("http://127.0.0.1:3000/games/some",{
       params:{
         ids: this.curation.games
       }
@@ -69,7 +69,6 @@ export default {
     border-radius:15px ;
   }
   #thumbnails{
-    
     display: inline;
     margin-left: 16px;
     z-index: 2;

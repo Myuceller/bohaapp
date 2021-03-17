@@ -18,7 +18,7 @@ router.get("/",(req,res,next)=>{ //전체 그룹 가져오기
 });
 
 router.get('/some',async (req,res,next)=>{
-    console.log("game/some get 호출");
+    console.log("games/some get 호출");
     const ids = req.query.ids;
     const records = await Game.find({ '_id': { $in: ids } });
     console.log(records);

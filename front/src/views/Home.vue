@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <p id="header">샘플텍스트 및 샘플카드</p>
-    <div v-for="(game,i) in games" :key="i" id="gamecard">
+    <div v-for="(game,i) in this.$store.state.games" :key="i" id="gamecard">
       <div @click="RouteToGameinfo(game)"><GameCard :game="game"></GameCard></div>
     </div>
   </div>
@@ -9,7 +9,8 @@
 
 <script>
 import GameCard from "../components/GameCard.vue";
-import axios from 'axios';
+// import axios from 'axios';
+import { mapMutations } from 'vuex';
 export default {
   name: 'Home',
   components:{
@@ -17,29 +18,31 @@ export default {
   },
   data() {
     return{
-      games:[]
+      games:this.$store.state.games
     }
   },
   methods:{
+    ...mapMutations(['getGames']),
     RouteToGameinfo(gameinfo){
       this.$router.push({name:"GameInfo",params:{game:gameinfo}})
     },
-    loadGames(){
-      console.log("loadGames호출");
-      this.$http.get("/game")
-      .then(res=>{
-        this.games = res.data;
-        console.log(res);
-        console.log(this.games);
-      })
-      .catch(err=>{
-        console.log(err);
-      })
-    }
+    // loadGames(){
+    //   console.log("loadGames호출");
+    //   axios.get("http://127.0.0.1:3000/games")
+    //   .then(res=>{
+    //     this.games = res.data;
+    //     console.log(res);
+    //     console.log(this.games);
+    //   })
+    //   .catch(err=>{
+    //     console.log(err);
+    //   })
+    // }
   },
   mounted(){
-    console.log("home mounted호출");
-    this.loadGames();
+    this.getGames();
+    // console.log("home mounted호출");
+    // this.loadGames();
   }
 }
 </script>

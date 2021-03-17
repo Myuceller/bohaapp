@@ -36,7 +36,7 @@
 </template>
 
 <script>
-
+import { mapMutations } from 'vuex'
 export default {
   name: 'App',
   data(){
@@ -44,10 +44,23 @@ export default {
       items: [
       { title: "Home", icon: "mdi-view-dashboard" },
       { title: "Curation", icon:"mdi-android-messages"}
-    ],
-    drawer: false,
-    title: "보드게임하자",
+        ],
+      drawer: false,
+      title: "보드게임하자",
     }
+  },
+  methods:{
+    ...mapMutations(['getGames','getCurations'])
+  },
+  // computed:{
+  //   games(){
+  //     return this.$store.state.games;
+  //   }
+  // },
+  mounted(){
+    // this.$store.commit('getGames')
+    this.getGames();
+    this.getCurations();
   }
 };
 </script>
@@ -58,4 +71,7 @@ export default {
     font-weight: 800;
     src: url('./assets/font/GmarketSansTTFBold.ttf') format('truetype');
   }
+:root{
+  --background-color:#09C761;
+}
 </style>
