@@ -21,14 +21,14 @@ export default {
     }
   },
   mounted(){
-    console.log("curation Props:",this.curation)
-    axios.get("http://127.0.0.1:3000/games/some",{
+    console.log("curation card mounted() 호출, curation Props:",this.curation)
+    console.log('this.curation.games:',this.curation.games);
+    axios.get("/games/some",{
       params:{
         ids: this.curation.games
       }
     })
     .then(res=>{
-      console.log(res);
       this.games = res.data;
       console.log("this.games",this.games)
     })

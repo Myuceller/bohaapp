@@ -29,6 +29,26 @@ const routes = [
     path:'/games',
     name:'Games',
     component:()=>import('../views/Games.vue')
+  },
+  {
+    path:'/admin',
+    name:'Admin',
+    component:()=>import('../admin/admin.vue')
+  },
+  {
+    path:'/admingames',
+    name:'AdminGames',
+    component:()=>import('../admin/AdminGames.vue')
+  },
+  {
+    path:'/addcuration',
+    name:'AddCuration',
+    component:()=>import('../admin/AddCuration.vue')
+  },
+  {
+    path:'/admincurations',
+    name:'admincurations',
+    component:()=>import('../admin/AdminCurations.vue')
   }
 ]
 

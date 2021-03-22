@@ -9,7 +9,7 @@ Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false
 
-new Vue({
+export default new Vue({
   router,
   store,
   vuetify,

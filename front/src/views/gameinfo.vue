@@ -11,10 +11,15 @@
       <div class="items">
         <div class="infoitem" id="players" style="font-size:16px;">
           <div class="material-icons" style="padding:3px; display:inline-block;">people</div>
-          <div style="position:relative; display:inline-block; margin:5px;">{{game.minplayer}}~{{game.maxplayer}}</div>
+          <div style="position:relative; display:inline-block; margin:5px;">
+            <span v-if="game.minplayer!=game.maxplayer">{{game.minplayer}}~{{game.maxplayer}}</span>
+            <span v-else>{{game.minplayer}}</span>
+          </div>
         </div>
         <div class="infoitem" id="playtime" style="font-size:16px;">
-          <ion-icon name="time" style="font-size:21px; padding-right:5px;"></ion-icon> <span>{{game.mintime}}~{{game.maxtime}}</span>
+          <ion-icon name="time" style="font-size:21px; padding-right:5px;"></ion-icon>
+          <span v-if="game.mintime!=game.maxtime">{{game.mintime}}~{{game.maxtime}}</span>
+          <span v-else>{{game.mintime}}</span>
         </div>
         <div class="infoitem" id="genre">
           {{game.genre}}

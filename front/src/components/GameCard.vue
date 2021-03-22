@@ -5,12 +5,15 @@
     <div class="gameinfo">
       <p id="gametitle" class="gmarcketsansbold">{{game.korname}}</p>
       <div class="play gmarcketsansbold">
-        <span class="material-icons" style="font-size:19px;">people</span>  <span>{{game.minplayer}}~{{game.maxplayer}}</span>
-        <ion-icon name="time" style="font-size:19px;"></ion-icon> <span id="playtime">{{game.mintime}}~{{game.maxtime}}</span>
+        <span class="material-icons" style="font-size:19px;">people</span>  
+          <span v-if="game.minplayer!=game.maxplayer" style="margin-right:5px; margin-left:3px;">{{game.minplayer}}~{{game.maxplayer}}</span>
+          <span v-else style="margin-right:5px; margin-left:3px;">{{game.minplayer}}</span>
+        <ion-icon name="time" style="font-size:19px;"></ion-icon>
+        <span v-if="game.mintime!=game.maxtime">{{game.mintime}}~{{game.maxtime}}</span>
+        <span v-else>{{game.mintime}}</span>
       </div>
       <p id="gametext" class="applesdgothic">{{game.gametext}}</p>
     </div>
-
   </div>
 </template>
 

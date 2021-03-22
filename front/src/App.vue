@@ -22,12 +22,28 @@
       <v-app-bar-nav-icon color="#FFFFFF" @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title><b style="color:#FFFFFF; font-family:gmarcketsans">{{ title }}</b></v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon>
+      <v-btn icon @click="search = !search">
         <v-icon color="#FFFFFF">mdi-magnify</v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
       <v-container fluid>
+        <input
+          v-if="search"
+          :value="gameInput"
+          placeholder="검색할 게임의 이름 입력"
+          v-on:input="typing"
+          type='text'
+          @input="submitAutoComplete"
+          />
+        <div class="autocomplete disabled" v-if="search">
+        <div
+          @click="RouteToGameinfo(res)"
+          style="cursor: pointer; background-color:yellow; width:600px; margin-top:10px;"
+          v-for="(res,i) in result"
+          :key="i"
+          >{{ res.korname }}</div>
+        </div>
         <router-view>
         </router-view>
       </v-container>
@@ -36,21 +52,45 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations } from 'vuex';
 export default {
   name: 'App',
   data(){
     return{
       items: [
       { title: "Home", icon: "mdi-view-dashboard" },
-      { title: "Curation", icon:"mdi-android-messages"}
+      { title: "Curation", icon:"mdi-android-messages"},
+      { title: 'Admin', icon: 'mdi-account'}
         ],
       drawer: false,
       title: "보드게임하자",
+      search:false,
+      gameInput:"",
+      result:"",
+      games:this.$store.state.games
     }
   },
   methods:{
-    ...mapMutations(['getGames','getCurations'])
+    ...mapMutations(['getGames','getCurations']),
+    typing(e){
+      this.gameInput = e.target.value;
+    },
+    submitAutoComplete() {
+      const autocomplete = document.querySelector(".autocomplete");
+      if (this.gameInput) {
+        autocomplete.classList.remove("disabled");
+        this.result = this.games.filter((game) => {
+          return game.korname.match(new RegExp(this.gameInput, "i"));
+        });
+      } else {
+        autocomplete.classList.add("disabled");
+      }
+    },
+    RouteToGameinfo(res){
+      this.search = false;
+      console.log(res);
+      this.$router.push({name:"GameInfo",params:{game:res}})
+    },
   },
   // computed:{
   //   games(){
@@ -61,6 +101,7 @@ export default {
     // this.$store.commit('getGames')
     this.getGames();
     this.getCurations();
+    console.log('this.games from app.vue',this.games);
   }
 };
 </script>
@@ -73,5 +114,8 @@ export default {
   }
 :root{
   --background-color:#09C761;
+}
+input{
+  border: 1px solid black ;
 }
 </style>

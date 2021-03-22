@@ -9,7 +9,7 @@
 
 <script>
 import GameCard from "../components/GameCard.vue";
-// import axios from 'axios';
+
 import { mapMutations } from 'vuex';
 export default {
   name: 'Home',
@@ -26,23 +26,9 @@ export default {
     RouteToGameinfo(gameinfo){
       this.$router.push({name:"GameInfo",params:{game:gameinfo}})
     },
-    // loadGames(){
-    //   console.log("loadGames호출");
-    //   axios.get("http://127.0.0.1:3000/games")
-    //   .then(res=>{
-    //     this.games = res.data;
-    //     console.log(res);
-    //     console.log(this.games);
-    //   })
-    //   .catch(err=>{
-    //     console.log(err);
-    //   })
-    // }
   },
   mounted(){
     this.getGames();
-    // console.log("home mounted호출");
-    // this.loadGames();
   }
 }
 </script>
