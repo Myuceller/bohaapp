@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapActions } from 'vuex';
 export default {
   name: 'App',
   data(){
@@ -71,7 +71,7 @@ export default {
     }
   },
   methods:{
-    ...mapMutations(['getGames','getCurations']),
+    ...mapActions(['getGames,getCurations']),
     typing(e){
       this.gameInput = e.target.value;
     },
@@ -92,15 +92,22 @@ export default {
       this.$router.push({name:"GameInfo",params:{game:res}})
     },
   },
-  // computed:{
-  //   games(){
-  //     return this.$store.state.games;
-  //   }
-  // },
+
   mounted(){
-    // this.$store.commit('getGames')
-    this.getGames();
-    this.getCurations();
+    console.log(this);
+    this.$http.get('/games')
+      .then(res=>{
+        console.log(this);
+        this.getGames(res.data);
+        console.log('app.vue에서 mounted로 this.$http.get /games호출, res.data:',res.data);
+      })
+      .catch(err=>console.log(err))
+    this.$http.get('/curation')
+      .then(res=>{
+        console.log('app.vue에서 mounted로 this.$http.get /curation res:',res);
+        this.getCurations(res.data.data);
+      })
+      .catch(err=>console.log(err))
     console.log('this.games from app.vue',this.games);
   }
 };

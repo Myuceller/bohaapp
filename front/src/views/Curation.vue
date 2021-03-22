@@ -4,7 +4,7 @@
       <p id="title" style="font-family:gmarcketsansbold;">보드게임하자 큐레이션 리스트</p>
       <p style="margin-left:25px;font-family:applesdgothic;" class="applesdgothic">보드게임하자의 게임마스터들이 100개가 넘는 게임들을 직접 해보며 엄선한 큐레이션을 확인해보세요!</p>
     </div>
-    <div v-for="(curation,i) in this.$store.state.curations" :key="i" id="curations">
+    <div v-for="(curation,i) in curations" :key="i" id="curations">
       <div @click="RouteToCurationinfo(curation)"><curation-card :curation="curation"></curation-card></div>
     </div>
   </div>
@@ -21,6 +21,7 @@ export default {
   },
   data(){
     return {
+      curations:this.$store.state.curations
     }
   },
   methods:{
@@ -35,15 +36,14 @@ export default {
     ...mapMutations(['getCurations',"changeRoutegames"]),
     RouteToCurationinfo(curation){
       console.log(curation);
-      this.changeRoutegames(curation.games);
-      console.log("this.$store.state.routeGames: ",this.$store.state.routeGames);
-      localStorage.setItem("routeGames",curation);
+      // this.changeRoutegames(curation.games);
+      // console.log("this.$store.state.routeGames: ",this.$store.state.routeGames);
+      // localStorage.setItem("routeGames",curation);
       this.$router.push({name:'Games',params:{games:curation.games , detail:curation.detail}})
       //route to curation
     }
   },
   mounted(){
-    this.getCurations()
   }
 }
 </script>

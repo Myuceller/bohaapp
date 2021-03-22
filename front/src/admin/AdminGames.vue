@@ -46,7 +46,7 @@ export default {
   },
   methods:{
     getGame(){
-      axios.get("/127.0.0.1:3000/games",{
+      this.$http.get("/games",{
       }).then(res=>{
         console.log("get '/' 호출")
         console.log(res)

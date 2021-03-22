@@ -34,7 +34,7 @@ export default {
     //localStorage.vuex =>games
     let gameids = this.$route.params.games;
 
-    axios.get('/127.0.0.1:3000/games/some',{
+    axios.get('/games/some',{
       params:{
         ids: gameids
       }

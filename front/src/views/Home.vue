@@ -22,13 +22,13 @@ export default {
     }
   },
   methods:{
-    ...mapMutations(['getGames']),
+    // ...mapMutations(['getGames']),
     RouteToGameinfo(gameinfo){
       this.$router.push({name:"GameInfo",params:{game:gameinfo}})
     },
   },
   mounted(){
-    this.getGames();
+    // this.getGames();
   }
 }
 </script>

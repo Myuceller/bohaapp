@@ -59,7 +59,7 @@ export default {
     //검색에서 인풋에 글자를 넣으면 비슷한걸 찾게 하자.
     //클릭하면 입력, 타이틀을 함께 입력해서 큐레이션을 추가하자.
     getgames(){ //게임 가져오기
-      axios.get('/127.0.0.1:3000/games')
+      this.$http.get('/games')
       .then(res=>{
         console.log(res);
         this.games = res.data;
@@ -90,7 +90,7 @@ export default {
       this.curation.games.pop()
     },
     confirm(){
-      axios.post("127.0.0.1:3000/curation",this.curation)
+      this.$http.post("/curation",this.curation)
       .then(res=>console.log(res))
       .catch(err=>console.log(err));
     }
