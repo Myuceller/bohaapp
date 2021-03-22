@@ -29,7 +29,7 @@ export default {
   },
   methods:{
     getCuration(){
-      axios.get('/127.0.0.1:3000/curation')
+      this.$http.get('/curation')
       .then(res=>{
         console.log(res);
         this.curations = res.data.data;

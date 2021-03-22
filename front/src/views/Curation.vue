@@ -35,9 +35,9 @@ export default {
     ...mapMutations(['getCurations',"changeRoutegames"]),
     RouteToCurationinfo(curation){
       console.log(curation);
-      this.changeRoutegames(curation.games);
-      console.log("this.$store.state.routeGames: ",this.$store.state.routeGames);
-      localStorage.setItem("routeGames",curation);
+      // this.changeRoutegames(curation.games);
+      // console.log("this.$store.state.routeGames: ",this.$store.state.routeGames);
+      // localStorage.setItem("routeGames",curation);
       this.$router.push({name:'Games',params:{games:curation.games , detail:curation.detail}})
       //route to curation
     }

@@ -75,7 +75,7 @@ export default {
         difficulty : this.form.difficulty,
         comment : this.form.comment
       };
-      axios.post('/127.0.0.1:3000/games',game)
+      this.$http.post('/games',game)
       .then(res=>{
         console.log(res.data)
       })

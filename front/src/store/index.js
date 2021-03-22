@@ -15,8 +15,7 @@ export default new Vuex.Store({
   },
   mutations: {
     getGames(state){  //game목록을 array로 가져온다.
-      console.log(vueInstance);
-      axios.get('/127.0.0.1:3000/games')
+      axios.get('/games')
       .then(res=>{
         state.games = res.data
         console.log("state.games:",state.games)
@@ -24,7 +23,7 @@ export default new Vuex.Store({
       .catch(err=>console.log(err))
     },
     getCurations(state){  //curation목록을 array로 가져온다.
-      axios.get('/127.0.0.1:3000/curation')
+      axios.get('/curation')
       .then(res=>{
         console.log('getCuration호출, res:',res);
         state.curations = res.data.data;
@@ -32,11 +31,14 @@ export default new Vuex.Store({
       })
       .catch(err=>console.log(err))
     },
-    changeRoutegames(state,payload){
-      state.routeGames = payload;
-    }
+    // changeRoutegames(state,payload){
+    //   state.routeGames = payload;
+    // }
   },
   actions: {
+    getGames:({commit},payload)=>{
+      
+    }
   },
   modules: {
   },
