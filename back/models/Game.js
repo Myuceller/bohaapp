@@ -26,10 +26,13 @@ const gameSchema = new Schema({
   state:{
     type:String
   },
-  genre:{
+  genre:[{
+    type:String
+  }],
+  difficulty:{
     type:String
   },
-  difficulty:{
+  comment:{
     type:String
   }
 });

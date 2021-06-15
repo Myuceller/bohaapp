@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Curation = require('../models/curation');
+const Curation = require('../models/Curation');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -34,4 +34,16 @@ router.post('/',(req,res,next)=>{
   })
 })
 
+router.get('/name',(req,res,next)=>{
+  console.log(req.query[0]);
+  let curationName = req.query[0];
+  Curation.findOne({detail:curationName},(err,doc)=>{
+    if(err){
+      res.send(err)
+    }else{
+      res.json(doc);
+      console.log(doc);
+    }
+  })
+})
 module.exports = router;

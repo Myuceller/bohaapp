@@ -14,21 +14,21 @@ export default new Vuex.Store({
     game:""
   },
   mutations: {
-    // getGames(state,payload){  //game목록을 array로 가져온다.
-    //   state.games = payload
-    // },
-    // getCurations(state,payload){  //curation목록을 array로 가져온다.
-    //   state.curations = payload
-    // },
-    // changeRoutegames(state,payload){
-    //   state.routeGames = payload;
-    // }
+    getGames(state,payload){  //game목록을 array로 가져온다.
+      state.games = payload
+    },
+    getCurations(state,payload){  //curation목록을 array로 가져온다.
+      state.curations = payload
+    },
+    changeRoutegames(state,payload){
+      state.routeGames = payload;
+    }
   },
   actions: {
-    getGames:({commit},payload)=>{
+    GetGames:({commit},payload)=>{
       commit('getGames',payload)
     },
-    getCurations:({commit},payload)=>{
+    GetCurations:({commit},payload)=>{
       commit('getCurations',payload)
     }
   },

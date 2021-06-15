@@ -1,7 +1,11 @@
 <template>
   <div id="container">
-    <div v-for="(game,i) in games" :key="i" id="thumbnails">
-      <img :src="require(`../assets/thumbnail/${game.engname}.png`)" alt="">
+    <div id="imgcontainer">
+      <div v-for="(game,i) in games" :key="i" id="thumbnails">
+        <img :src="`https://bohaapp.s3.ap-northeast-2.amazonaws.com/${game.engname}_thumbnail.jpg`"
+             onerror="this.src='https://bohaapp.s3.ap-northeast-2.amazonaws.com/error.jpg'"
+             alt="">
+      </div>
     </div>
     <div id="background">
       <p id="detail" class="applesdgothic">{{curation.detail}}</p>
@@ -21,16 +25,17 @@ export default {
     }
   },
   mounted(){
-    console.log("curation card mounted() 호출, curation Props:",this.curation)
-    console.log('this.curation.games:',this.curation.games);
-    axios.get("/games/some",{
+    // console.log("curation card mounted() 호출, curation Props:",this.curation)
+    // console.log('this.curation.games:',this.curation.games);
+    axios.get("http://127.0.0.1:3000/games/some",{
+    // this.$http.get('/games/some',{
       params:{
         ids: this.curation.games
       }
     })
     .then(res=>{
       this.games = res.data;
-      console.log("this.games",this.games)
+      // console.log("this.games",this.games)
     })
   },
   methods:{
@@ -58,10 +63,11 @@ export default {
   .applesdgothic{
     font-family: applesdgothic;
   }
-  #container {
-    white-space:nowrap; 
-    overflow-x: scroll;
+  #imgcontainer {
     position:sticky;
+    white-space:nowrap; 
+    overflow: scroll;
+    z-index: 2;
   }
   img {
     width: 82px;
@@ -69,6 +75,8 @@ export default {
     border-radius:15px ;
   }
   #thumbnails{
+    white-space:nowrap; 
+    overflow-x: hidden;
     display: inline;
     margin-left: 16px;
     z-index: 2;
@@ -84,7 +92,7 @@ export default {
   }
   #detail{
     position:relative;
-    left:21px;
+    left:15px;
     top:63px;
     text-align: left;
     letter-spacing: -0.36px;

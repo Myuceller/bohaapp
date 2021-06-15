@@ -1,8 +1,11 @@
 <template>
+  <keep-alive>
   <div id="container">
-    <div>
+    <div id="background">
       <div>
-        <img :src="require(`../assets/thumbnail/${game.engname}.png`)" alt="">
+        <img :src="`https://bohaapp.s3.ap-northeast-2.amazonaws.com/${game.engname}_thumbnail.jpg`"
+             onerror="this.src='https://bohaapp.s3.ap-northeast-2.amazonaws.com/error.jpg'" 
+             alt="">
         <div class="background">
           <div v-if="game.state" id="state" :style="{backgroundColor:color , color:fontcolor}"><p><b>{{game.state}}</b></p></div>
           <div id="gametitle">{{game.korname}}</div>
@@ -22,7 +25,7 @@
           <span v-else>{{game.mintime}}</span>
         </div>
         <div class="infoitem" id="genre">
-          {{game.genre}}
+          <span v-for="(genre,index) in game.genre" :key="index">{{genre}}</span>&nbsp;
         </div>
         <div class="infoitem" id="difficulty" v-bind:style="{ backgroundColor: backcolor }">
           {{game.difficulty}}
@@ -36,24 +39,29 @@
         <div class="gmarcket">
           <p class="gmarcketbold" style="font-size:18px"><b>에디터의 한줄평</b></p>
           <p style="color:#989898; font-size:13px">에디터 S</p>
-          <p style="color:#272727; font-size:16px">"속느냐 속이느냐 그것이 문제로다"</p>
+          <p style="color:#272727; font-size:16px">"{{game.comment}}"</p>
         </div>
       </div>
     </div>
     <div id="photo">
-      <p class="subinfo gmarcketbold">게임룰 설명영상</p>
-      <a href="https://www.youtube.com/watch?v=78Ga9vT3eIE">ㅁㄴㅇㄹ</a>
-      <p class="subinfo gmarcketbold">개임 상세 사진</p>
+      <p class="subinfo gmarcketbold">게임 상세 사진</p>
+      <img :src="`https://bohaapp.s3.ap-northeast-2.amazonaws.com/${game.engname}_1.jpg`"
+           alt="">
+      <img :src="`https://bohaapp.s3.ap-northeast-2.amazonaws.com/${game.engname}_2.jpg`"
+           alt="">
     </div>
   </div>
+  </keep-alive>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'gameinfo',
   data(){
     return {
-      game : this.$route.params.game,
+      game : this.$route.query.gameid,
       backcolor:"#09C761",
       color:"#FFEB12",
       fontcolor:"#272727"
@@ -72,6 +80,18 @@ export default {
     }
   },
   mounted(){
+    let gameid = this.$route.query.gameid;
+    axios.get('http://127.0.0.1:3000/games/some',{
+    // this.$http.get('/games/some',{
+      params:{
+        ids: gameid
+      }
+    }).then(res=>{
+      this.game = res.data[0];
+      console.log("this.games",this.game)
+    }).catch(err=>{
+      console.log(err);
+    })
     this.changeColor();
     this.changeStateColor();
   },
@@ -201,5 +221,14 @@ export default {
   .expText{
     position:relative;
     top:200px;
+  }
+  #difficulty{
+    text-transform:capitalize;
+  }
+  #photo img{
+    position: relative;
+    width: 356px;
+    height: 217px;
+    margin-bottom: 25px;
   }
 </style>

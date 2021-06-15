@@ -1,8 +1,56 @@
 const express = require('express');
 const router = express.Router();
-const Game = require('../models/Game')
+const Game = require('../models/Game');
+const multer = require('multer');
+const aws = require('aws-sdk');
+const multerS3 = require('multer-s3');
+
+// const s3 = new aws.S3({
+//   accessKeyId:"AKIA3TXCYHZJ4OEN2H5U",
+//   secretAccessKey:"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",
+//   region: 'ap-northeast-2'
+// })
+
 /* GET home page. */
-router.get("/",(req,res,next)=>{ //전체 그룹 가져오기
+router.get("/",(req,res,next)=>{ 
+  // 
+  //req.query => 'normal'
+  console.log(' get /games 호출');
+  const value = req.query.value;
+  const key = req.query.key;
+  console.log('req.query = > ', req.query);
+  console.log('value =' , value);
+  console.log('key = ' , key);
+  if(key == 'difficulty'){
+    Game.find({difficulty : value},{},(err,docs)=>{
+      if(err) console.log(err);
+      res.status(200).json({
+        massage:'difficulty find',
+        games:docs
+      })
+    })
+  }
+  if(key == 'player'){  //플레이어 들어옴 minp <= value && maxp >= value
+    Game.find({maxplayer:{$gte:value},minplayer:{$lte:value}},{},(err,docs)=>{
+      if(err) console.log(err);
+      res.status(200).json({
+        message:'player find',
+        games:docs
+      })
+    })
+  }
+  if(key == 'genre'){
+    Game.find({genre:value},{},(err,docs)=>{
+      if(err) console.log(doc);
+      res.status(200).json({
+        message:'genre find',
+        games:docs
+      })
+    })
+  }
+});
+
+router.get('/all',(req,res,next)=>{
   let responseData = {};
   Game.find({},(err,rows)=>{
       if(err) throw err;
@@ -15,8 +63,7 @@ router.get("/",(req,res,next)=>{ //전체 그룹 가져오기
       res.json(responseData.data);
     //   console.log(responseData.data);
   });
-});
-
+})
 router.post("/",async (req,res,next)=>{
   console.log(req);
   //데이터 추가;
@@ -31,7 +78,8 @@ router.post("/",async (req,res,next)=>{
       gametext : req.body.gametext,
       genre : req.body.genre,
       difficulty : req.body.difficulty,
-      comment : req.body.comment
+      comment : req.body.comment,
+      state: req.body.state,
     })
     console.log("game객체 확인",games);
     const result = await games.save();
@@ -46,7 +94,8 @@ router.post("/",async (req,res,next)=>{
       gametext:result.gametext,
       genre:result.genre,
       difficulty:result.difficulty,
-      comment:result.comment
+      comment:result.comment,
+      state:result.state
     });
   }catch(err){
     console.log(err)
@@ -55,17 +104,31 @@ router.post("/",async (req,res,next)=>{
 
 router.put("/",(req,res,next)=>{
   console.log("put games호출");
-  console.log(req);
-  let game = req.body;
-  Game.findByIdAndUpdate(game._id,{$set:{game}},(err,doc)=>{
+  console.log('req.body:',req.body);
+  let updateData = req.body;
+  Game.updateOne({_id:updateData._id},{$set:updateData},(err,doc)=>{
     if(err) console.log(err);
-    else console.log("update:",doc);
+    else {
+      console.log("update:",doc);
+      res.json({doc:doc})
+      }
   })
-  console.log(game);
+  
+  // console.log(game);
+  // const game = req.body;
+  // Game.updateOne({_id:game._id},{engname:'agricola'},(err,doc)=>{
+  //   if(err) console.log(err);
+  //   else console.log("doc:",doc);
+  // })
 })
 
 router.delete("/",(req,res,next)=>{
-  Game.deleteOne({_id:req.query._id});
+  console.log(req);
+  Game.deleteOne({_id:req.query._id},(err,doc)=>{
+    if(err) console.log(err);
+    else
+      console.log(doc);
+  });
 })
 
 router.get('/some',async (req,res,next)=>{
@@ -75,4 +138,5 @@ router.get('/some',async (req,res,next)=>{
     console.log(records);
     res.json(records);
 })
+
 module.exports = router;

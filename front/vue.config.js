@@ -5,6 +5,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
   },
+  filenameHashing: false,
   outputDir:"../back/public",
   devServer:{
     proxy:{

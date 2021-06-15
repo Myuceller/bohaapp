@@ -31,24 +31,19 @@ const routes = [
     component:()=>import('../views/Games.vue')
   },
   {
-    path:'/admin',
-    name:'Admin',
-    component:()=>import('../admin/admin.vue')
+    path:'/sort',
+    name:'Sort',
+    component:()=>import('../views/sort.vue')
   },
   {
-    path:'/admingames',
-    name:'AdminGames',
-    component:()=>import('../admin/AdminGames.vue')
+    path:'/player',
+    name:'Player',
+    component:()=>import('../views/Player.vue')
   },
   {
-    path:'/addcuration',
-    name:'AddCuration',
-    component:()=>import('../admin/AddCuration.vue')
-  },
-  {
-    path:'/admincurations',
-    name:'admincurations',
-    component:()=>import('../admin/AdminCurations.vue')
+    path:'/cafeinfo',
+    name:'Cafeinfo',
+    component:()=>import('../views/CafeInfo.vue')
   }
 ]
 

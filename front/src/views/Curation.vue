@@ -2,7 +2,7 @@
   <div id="container">
     <div>
       <p id="title" style="font-family:gmarcketsansbold;">보드게임하자 큐레이션 리스트</p>
-      <p style="margin-left:25px;font-family:applesdgothic;" class="applesdgothic">보드게임하자의 게임마스터들이 100개가 넘는 게임들을 직접 해보며 엄선한 큐레이션을 확인해보세요!</p>
+      <p style="margin-left:15px;font-family:applesdgothic;" class="applesdgothic">보드게임하자의 게임마스터들이 100개가 넘는 게임들을 직접 해보며 엄선한 큐레이션을 확인해보세요!</p>
     </div>
     <div v-for="(curation,i) in curations" :key="i" id="curations">
       <div @click="RouteToCurationinfo(curation)"><curation-card :curation="curation"></curation-card></div>
@@ -39,7 +39,11 @@ export default {
       // this.changeRoutegames(curation.games);
       // console.log("this.$store.state.routeGames: ",this.$store.state.routeGames);
       // localStorage.setItem("routeGames",curation);
-      this.$router.push({name:'Games',params:{games:curation.games , detail:curation.detail}})
+      
+      this.$router.push({name:'Games',query:{games:curation.games , detail:curation.detail}})
+      .catch(err=>{
+        this.$router.go()
+      })
       //route to curation
     }
   },
@@ -64,7 +68,7 @@ export default {
 #title{
   font-size: 23px;
   color :#3379FF;
-  margin-top:25px;
-  margin-left:25px;
+  margin-top:15px;
+  margin-left:15px;
 }
 </style>

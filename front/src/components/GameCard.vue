@@ -1,6 +1,8 @@
 <template>
   <div id="container">
-    <img :src="require(`../assets/thumbnail/${game.engname}.png`)" alt="">
+    <img :src="`https://bohaapp.s3.ap-northeast-2.amazonaws.com/${game.engname}_thumbnail.jpg`"
+         alt=""
+         onerror="this.src='https://bohaapp.s3.ap-northeast-2.amazonaws.com/error.jpg'">
     <div v-if="game.state" id="state" class="gmarcketsansbold" :style="{backgroundColor:color , color:fontcolor}">{{game.state}}</div> 
     <div class="gameinfo">
       <p id="gametitle" class="gmarcketsansbold">{{game.korname}}</p>
@@ -23,7 +25,8 @@ export default {
   data(){
     return{
       color:"#FFEB12",
-      fontcolor:"#272727"
+      fontcolor:"#272727",
+      imagePath:''
     }
   },
   methods:{
@@ -42,11 +45,18 @@ export default {
     // this.path = "../assets/thumbnail/"+this.game.engname+".png";
     // console.log("GameCard props:",this.path);
     this.changeStateColor();
+    // if(require(`../assets/thumbnail/${game.engname}.png`)){
+    //   this.imagePath = 
+    // }
+
   }
 }
 </script>
 
 <style scoped>
+#container{
+  width:356px;
+}
   @font-face {
     font-family: 'gmarcketsansbold';
     font-style: bold;
@@ -76,13 +86,13 @@ img{
   border-radius: 10px;
 }
 #state{
+  right:14px;
   float: right;
   position: relative;
   z-index: 2;
   top:12px;
   width:65px;
   height:30px;
-  /* background: #FFEB00 0% 0% no-repeat padding-box; */
   padding-top:5.5px;
   border-radius: 15px;
   opacity: 1;
@@ -111,7 +121,7 @@ img{
 #gametext{
   display: inline-block;
   top:13px;
-  width:145px;
+  width:170px;
   height: 35px;
   left:18px;
   position:relative;

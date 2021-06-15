@@ -20,21 +20,25 @@ export default {
   },
   data() {
     return{
-      games:this.$route.params.games,
-      detail:this.$route.params.detail
+      games:"",
+      detail:this.$route.query.detail
     }
   },
   methods:{
     RouteToGameinfo(gameinfo){
-      localStorage.setItem("game",gameinfo)
-      this.$router.push({name:"GameInfo",params:{game:gameinfo}})
+      console.log(gameinfo);
+      this.$router.push({name:"GameInfo",query:{gameid:gameinfo._id}})
+      .catch(err=>{
+        this.$router.go()
+      })
     },
   },
   mounted(){
     //localStorage.vuex =>games
-    let gameids = this.$route.params.games;
+    let gameids = this.$route.query.games;
 
-    axios.get('/games/some',{
+    axios.get('http://127.0.0.1:3000/games/some',{
+    // this.$http.get('/games/some',{
       params:{
         ids: gameids
       }
@@ -52,8 +56,6 @@ export default {
   #header{
     top: 148px;
     left: 26px;
-    width: 189px;
-    height: 24px;
     font: normal normal bold 20px/24px Apple SD Gothic Neo;
     letter-spacing: -0.4px;
     color: #272727;
@@ -61,5 +63,7 @@ export default {
   }
   #gamecard{
     margin-top:42px;
+    display: flex;
+    justify-content: center;
   }
 </style>
