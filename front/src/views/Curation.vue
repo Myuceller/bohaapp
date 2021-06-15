@@ -39,15 +39,11 @@ export default {
       // this.changeRoutegames(curation.games);
       // console.log("this.$store.state.routeGames: ",this.$store.state.routeGames);
       // localStorage.setItem("routeGames",curation);
-<<<<<<< HEAD
       
       this.$router.push({name:'Games',query:{games:curation.games , detail:curation.detail}})
       .catch(err=>{
         this.$router.go()
       })
-=======
-      this.$router.push({name:'Games',params:{games:curation.games , detail:curation.detail}})
->>>>>>> dcb61e6f484d6561c7fe93fa0589564f6676d5b5
       //route to curation
     }
   },

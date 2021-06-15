@@ -52,6 +52,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
 Mongoose.connect(process.env.MONGO_URI)
 .then(console.log("listening to port 3000"))
 .catch(err=>console.log(err));
