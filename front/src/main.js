@@ -11,6 +11,7 @@ Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false
 
+<<<<<<< HEAD
 extend('required',required);
 extend('oneOf',{
   ...oneOf,
@@ -18,6 +19,9 @@ extend('oneOf',{
 });
 
 export default new Vue({
+=======
+new Vue({
+>>>>>>> dcb61e6f484d6561c7fe93fa0589564f6676d5b5
   router,
   store,
   vuetify,
