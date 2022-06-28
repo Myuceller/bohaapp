@@ -15,10 +15,12 @@ export default new Vuex.Store({
   },
   mutations: {
     getGames(state,payload){  //game목록을 array로 가져온다.
-      state.games = payload
+      state.games = payload;
+      console.log("받아온 게임",state.games);
     },
     getCurations(state,payload){  //curation목록을 array로 가져온다.
-      state.curations = payload
+      state.curations = payload;
+      console.log("받아온 큐레이션",state.curations);
     },
     // changeRoutegames(state,payload){
     //   state.routeGames = payload;

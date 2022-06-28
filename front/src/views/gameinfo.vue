@@ -1,11 +1,12 @@
 <template>
   <keep-alive>
   <div id="container">
-    <div id="background">
+    <div id="background"></div>
+    <div>
       <div>
         <img :src="`https://bohaapp.s3.ap-northeast-2.amazonaws.com/${game.engname}_thumbnail.jpg`"
-             onerror="this.src='https://bohaapp.s3.ap-northeast-2.amazonaws.com/error.jpg'" 
-             alt="">
+              onError="this.src='https://bohaapp.s3.ap-northeast-2.amazonaws.com/error.jpg'" 
+              alt="">
         <div class="background">
           <div v-if="game.state" id="state" :style="{backgroundColor:color , color:fontcolor}"><p><b>{{game.state}}</b></p></div>
           <div id="gametitle">{{game.korname}}</div>
@@ -81,13 +82,13 @@ export default {
   },
   mounted(){
     let gameid = this.$route.query.gameid;
-    axios.get('http://127.0.0.1:3000/games/some',{
-    // this.$http.get('/games/some',{
+    // axios.get('http://127.0.0.1:3000/games/one',{
+    this.$http.get('/games/one',{
       params:{
         ids: gameid
       }
     }).then(res=>{
-      this.game = res.data[0];
+      this.game = res.data;
       console.log("this.games",this.game)
     }).catch(err=>{
       console.log(err);
@@ -130,19 +131,19 @@ export default {
     font-family: 'gmarcketsans';
     font-style: normal;
     font-weight: 800;
-    src: url('../assets/font/GmarketSansTTFMedium.ttf') format('truetype');
+    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFMedium.ttf') format('truetype');
   }
   @font-face {
     font-family: 'gmarcketsansbold';
     font-style: bold;
     font-weight: 800;
-    src: url('../assets/font/GmarketSansTTFBold.ttf') format('truetype');
+    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
   }
   @font-face {
     font-family: 'applesdgothic';
     font-style: normal;
     font-weight: 800;
-    src: url('../assets/font/AppleSDGothicNeoEB.ttf') format('truetype');
+    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
   }
   img {
     position:relative;
@@ -186,8 +187,8 @@ export default {
   }
   .items{
     vertical-align: middle;
-    position:absolute;
     top:200px;
+    position:absolute;
     font-size:20px;
     font-family:gmarcketsansbold;
     display: grid;
@@ -216,6 +217,7 @@ export default {
   }
   #photo{
     position:relative;
+    background-color: #FFFFFF;
     top:200px;
   }
   .expText{
@@ -230,5 +232,15 @@ export default {
     width: 356px;
     height: 217px;
     margin-bottom: 25px;
+  }
+  #background{
+    margin:0;
+    padding:0;
+    left:0;
+    top:75px;
+    width:100vw;
+    height:500px;
+    position:absolute;
+    background-color:#f8f8f8;
   }
 </style>

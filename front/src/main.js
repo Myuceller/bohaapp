@@ -4,19 +4,12 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
 import axios from "axios";
-import { extend } from 'vee-validate';
-import { required ,oneOf } from 'vee-validate/dist/rules'
+import InfiniteLoading from 'vue-infinite-loading';
 
 Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false
-
-extend('required',required);
-extend('oneOf',{
-  ...oneOf,
-  message: '아직 아무도 입력 안했어요'
-});
-
+Vue.use(InfiniteLoading)
 export default new Vue({
   router,
   store,

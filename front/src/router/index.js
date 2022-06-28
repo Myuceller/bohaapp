@@ -36,15 +36,19 @@ const routes = [
     component:()=>import('../views/sort.vue')
   },
   {
-    path:'/player',
-    name:'Player',
-    component:()=>import('../views/Player.vue')
+    path:'/gamelist',
+    name:'GameList',
+    component:()=>import('../views/GameList.vue')
   },
   {
     path:'/cafeinfo',
     name:'Cafeinfo',
     component:()=>import('../views/CafeInfo.vue')
-  }
+  },
+  { 
+    path: '/:pathMatch(.*)*',
+    component: ()=>import('../views/PageNotFound.vue')
+  },
 ]
 
 const router = new VueRouter({

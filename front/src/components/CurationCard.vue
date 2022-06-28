@@ -27,8 +27,8 @@ export default {
   mounted(){
     // console.log("curation card mounted() 호출, curation Props:",this.curation)
     // console.log('this.curation.games:',this.curation.games);
-    axios.get("http://127.0.0.1:3000/games/some",{
-    // this.$http.get('/games/some',{
+    // axios.get("http://127.0.0.1:3000/games/some",{
+    this.$http.get('/games/some',{
       params:{
         ids: this.curation.games
       }
@@ -49,13 +49,13 @@ export default {
     font-family: 'gmarcketsansbold';
     font-style: bold;
     font-weight: 800;
-    src: url('../assets/font/GmarketSansTTFBold.ttf') format('truetype');
+    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
   }
   @font-face {
     font-family: 'applesdgothic';
     font-style: normal;
     font-weight: 800;
-    src: url('../assets/font/AppleSDGothicNeoB.ttf') format('truetype');
+    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
   }
   .gmarcketsansbold{
     font-family: gmarcketsansbold;

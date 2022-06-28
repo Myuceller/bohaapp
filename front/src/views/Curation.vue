@@ -42,6 +42,7 @@ export default {
       
       this.$router.push({name:'Games',query:{games:curation.games , detail:curation.detail}})
       .catch(err=>{
+        console.log(err);
         this.$router.go()
       })
       //route to curation
@@ -57,13 +58,13 @@ export default {
     font-family: 'gmarcketsansbold';
     font-style: bold;
     font-weight: 800;
-    src: url('../assets/font/GmarketSansTTFBold.ttf') format('truetype');
+    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
   }
 @font-face {
   font-family: 'applesdgothic';
   font-style: normal;
   font-weight: 800;
-  src: url('../assets/font/AppleSDGothicNeoB.ttf') format('truetype');
+  src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
 }
 #title{
   font-size: 23px;

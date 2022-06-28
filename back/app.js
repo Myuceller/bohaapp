@@ -34,6 +34,11 @@ app.use('/users', usersRouter);
 app.use('/games', gameRouter);
 app.use('/curation',curationRouter);
 app.use('/', indexRouter);
+
+app.get('*', function(req, res, next) {
+  res.sendFile(path.join(__dirname + '/public/index.html'));
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

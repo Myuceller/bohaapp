@@ -45,12 +45,12 @@ export default {
   data(){
     return {
       PlayerItems:[
-        {text:'인원 별 추천게임',route:'Player' ,color:'#8B8B8B' , icon:'people',iconborder:"#265EC7"},
-        {text:'카페 이용안내',route:'Cafeinfo' , color:'#7A604C' , icon:'coffee' , iconborder:"#534133"}
+        {text:'게임 목록',route:'GameList' ,color:'#8B8B8B' , icon:'people',iconborder:"#265EC7"},
+        {text:'이용 안내',route:'Cafeinfo' , color:'#7A604C' , icon:'coffee' , iconborder:"#534133"}
       ],
       items:[
-        {text:'인기 게임 TOP 10',curationName:"인기 Top10" ,color:'#FF7227',icon:'star' , iconborder:"#D94B00"},
-        {text:'게임마스터 추천게임' ,curationName:'게임마스터추천 "이달의게임"' , color:'#3379FF' , icon:'thumb_up' , iconborder:"#606060"}
+        {text:'인기 게임 Top 10',curationName:"인기 게임 Top 10" ,color:'#FF7227',icon:'star' , iconborder:"#D94B00"},
+        {text:"추천 '이달의 게임'" ,curationName:'게임마스터추천 "이달의게임"' , color:'#3379FF' , icon:'thumb_up' , iconborder:"#606060"}
       ],
       // playerItems:[
       //   {text:'2인 게임' , value:2},
@@ -73,8 +73,8 @@ export default {
       console.log('asdf');
     },
     routeToCuration(curationName){
-      axios.get('http://127.0.0.1:3000/curation/name',{params:curationName})
-      // this.$http.get('/curation/name',{params:curationName})
+      // axios.get('http://127.0.0.1:3000/curation/name',{params:curationName})
+      this.$http.get('/curation/name',{params:curationName})
       .then(res=>{
         console.log(res);
         this.$router.push({name:'Games',query:{games:res.data.games,detail:res.data.detail}})
@@ -88,9 +88,30 @@ export default {
 </script>
 
 <style scoped>
-*{
-  font-family:GmarcketSans;
-}
+@font-face {
+    font-family: 'GmarcketSans';
+    font-style: normal;
+    font-weight: 200;
+    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFMedium.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'GmarcketSansBold';
+    font-style: bold;
+    font-weight: 700;
+    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'AppleSdGothicNeo';
+    font-style: normal;
+    font-weight: 500;
+    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/AppleSDGothicNeoL.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'AppleSdGothicNeoBold';
+    font-style: bold;
+    font-weight:700;
+    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
+  }
 h1{
   text-align: center;
   font: normal normal bold 20px/30px GmarcketSansBold;
@@ -102,7 +123,6 @@ h1{
   float: right;
   width:35px;
   height:30px;
-  
 }
 p{
   font-size: 14px;
@@ -111,39 +131,15 @@ p{
   font-family: AppleSdGothicNeo;
   color: #4E4E4E;
 }
-  @font-face {
-    font-family: 'GmarcketSans';
-    font-style: normal;
-    font-weight: 200;
-    src: url('../assets/font/GmarketSansTTFMedium.ttf') format('truetype');
-  }
-  @font-face {
-    font-family: 'GmarcketSansBold';
-    font-style: bold;
-    font-weight: 700;
-    src: url('../assets/font/GmarketSansTTFBold.ttf');
-  }
-  @font-face {
-    font-family: 'AppleSdGothicNeo';
-    font-style: normal;
-    font-weight: 500;
-    src: url('../assets/font/AppleSDGothicNeoL.ttf');
-  }
-  @font-face {
-    font-family: 'AppleSdGothicNeoBold';
-    font-style: bold;
-    font-weight:700;
-    src: url('../assets/font/AppleSDGothicNeoB.ttf');
-  }
-  .part{
-    color:#FFFFFF;
-    margin-bottom:12px;
-    font-size:18px;
-    height: 72px;
-    border-radius: 10px;
-    text-align: left;
-    padding-top:23px;
-    padding-left:24px;
-    font-family: AppleSdGothicNeoBold;
-  }
+.part{
+  color:#FFFFFF;
+  margin-bottom:12px;
+  font-size:18px;
+  height: 72px;
+  border-radius: 10px;
+  text-align: left;
+  padding-top:23px;
+  padding-left:24px;
+  font-family: AppleSdGothicNeoBold;
+}
 </style>

@@ -11,12 +11,11 @@
 
 <script>
 import axios from 'axios';
-import GameCard from "../components/GameCard.vue";
 
 export default {
   name: 'Home',
   components:{
-    GameCard
+    GameCard : ()=>import("../components/GameCard.vue")
   },
   data() {
     return{
@@ -37,8 +36,8 @@ export default {
     //localStorage.vuex =>games
     let gameids = this.$route.query.games;
 
-    axios.get('http://127.0.0.1:3000/games/some',{
-    // this.$http.get('/games/some',{
+    // axios.get('http://127.0.0.1:3000/games/some',{
+    this.$http.get('/games/some',{
       params:{
         ids: gameids
       }
@@ -54,8 +53,6 @@ export default {
 
 <style scoped>
   #header{
-    top: 148px;
-    left: 26px;
     font: normal normal bold 20px/24px Apple SD Gothic Neo;
     letter-spacing: -0.4px;
     color: #272727;
@@ -63,6 +60,7 @@ export default {
   }
   #gamecard{
     margin-top:42px;
+    position:relative;
     display: flex;
     justify-content: center;
   }

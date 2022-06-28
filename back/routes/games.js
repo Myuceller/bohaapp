@@ -51,16 +51,17 @@ router.get("/",(req,res,next)=>{
 });
 
 router.get('/all',(req,res,next)=>{
-  let responseData = {};
-  Game.find({},(err,rows)=>{
+  // let responseData = {};
+  // Game.find({},(err,rows)=>{
+  Game.find({},{korname:1},(err,rows)=>{
       if(err) throw err;
-      if(rows.length) {
-          responseData.result = 1;
-          responseData.data = rows;
-      }else{
-          responseData.result = 0;
+      // if(rows.length) {
+      //     responseData.result = 1;
+      //     responseData.data = rows;}
+      else{
+        res.json(rows);
+        console.log(rows)
       }
-      res.json(responseData.data);
     //   console.log(responseData.data);
   });
 })
@@ -80,6 +81,7 @@ router.post("/",async (req,res,next)=>{
       difficulty : req.body.difficulty,
       comment : req.body.comment,
       state: req.body.state,
+      click: 0
     })
     console.log("game객체 확인",games);
     const result = await games.save();
@@ -132,11 +134,40 @@ router.delete("/",(req,res,next)=>{
 })
 
 router.get('/some',async (req,res,next)=>{
-    console.log("games/some get 호출");
-    const ids = req.query.ids;
-    const records = await Game.find({ '_id': { $in: ids } });
-    console.log(records);
-    res.json(records);
+  console.log("games/some get 호출");
+  const ids = req.query.ids;
+  const records = await Game.find({ '_id': { $in: ids }});
+  console.log(records);
+  res.json(records);
+})
+router.get('/page',async (req,res,next)=>{
+  console.log(req);
+  let page = parseInt(req.query.page);
+  console.log("page is",page*10,typeof(page));
+  Game.find({},(err,rows)=>{
+    if(err) throw err;
+    // if(rows.length) {
+    //     responseData.result = 1;
+    //     responseData.data = rows;}
+    else{
+      res.json(rows);
+      console.log(rows)
+    }
+  //   console.log(responseData.data);
+  }).limit(10).skip(page*10).sort({"korname":1});
+})
+router.get('/one',async (req,res,next)=>{ //_id값을 통해 게임 하나 찾기
+  console.log("games/one get 호출");
+  const id = req.query.ids;
+  const record = await Game.findOne({ '_id': id },(err,doc)=>{
+    if(err) console.log(err);
+    else{
+      doc.click += 1;
+      doc.save(( err => console.log(err)))
+    }
+  })
+  console.log("asdfasdfasdf",record);
+  res.json(record);
 })
 
 module.exports = router;

@@ -34,6 +34,9 @@ const gameSchema = new Schema({
   },
   comment:{
     type:String
+  },
+  click:{
+    type:Number
   }
 });
 

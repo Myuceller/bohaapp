@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "devServer": {
     "historyApiFallback": true
@@ -24,5 +24,8 @@
     "multer-s3": "^2.9.0",
     "nodemon": "^2.0.7",
     "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "webpack-bundle-analyzer": "^4.5.0"
   }
 }

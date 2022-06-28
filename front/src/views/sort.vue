@@ -17,7 +17,7 @@ import axios from 'axios';
 export default {
   name: 'Home',
   components:{
-    GameCard
+    GameCard :()=>import("../components/GameCard.vue")
   },
   data() {
     return{
@@ -39,8 +39,8 @@ export default {
     // console.log('this.data:',this.key , this.text, this.value);
     // console.log('this.$route.params',this.$route.query.value);
     let game = this.$route.query;
-    axios.get('http://127.0.0.1:3000/games',{params:{value:game.value , key:game.key}})
-    // this.$http.get('/games',{params:{value:game.value , key:game.key}})
+    // axios.get('http://127.0.0.1:3000/games',{params:{value:game.value , key:game.key}})
+    this.$http.get('/games',{params:{value:game.value , key:game.key}})
     .then(res=>{
       console.log(res);
       this.games = res.data.games.sort((a,b)=>(a.korname>b.korname)?1:-1)
@@ -55,7 +55,7 @@ export default {
   font-family: 'applesdgothic';
   font-style: normal;
   font-weight: 800;
-  src: url('../assets/font/AppleSDGothicNeoB.ttf') format('truetype');
+  src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf');
 }
   #header{
     font: normal normal bold 20px/24px applesdgothic;
