@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Install frontend deps
 COPY front/package.json front/package-lock.json ./front/
-RUN cd front && npm ci
+RUN cd front && npm install
 
 # Build frontend (needs legacy OpenSSL provider for webpack 4)
 COPY front ./front
