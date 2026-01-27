@@ -1,6 +1,6 @@
 **/node_modules
 **/dist
-back/public
+backend/public
 .git
 .DS_Store
 npm-debug.log

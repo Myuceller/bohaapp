@@ -1,6 +1,6 @@
 .DS_Store
-back/.env
-back/node_modules/
-front/node_modules/
+.env
+backend/.env
+backend/node_modules/
 node_modules/
-back/public/
+backend/public/
