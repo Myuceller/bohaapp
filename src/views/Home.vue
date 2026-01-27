@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <div>
-      <img src="https://bohaapp.s3.ap-northeast-2.amazonaws.com/BoardgamehajaLogo.jpg"
+      <img src="https://boha-app.s3.ap-southeast-2.amazonaws.com/BoardgamehajaLogo.jpg"
            alt=""
            style="width:100%;">
     </div>
@@ -91,25 +91,25 @@ export default {
     font-family: 'GmarcketSans';
     font-style: normal;
     font-weight: 200;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFMedium.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/GmarketSansTTFMedium.ttf') format('truetype');
   }
   @font-face {
     font-family: 'GmarcketSansBold';
     font-style: bold;
     font-weight: 700;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
   }
   @font-face {
     font-family: 'AppleSdGothicNeo';
     font-style: normal;
     font-weight: 500;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/AppleSDGothicNeoL.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/AppleSDGothicNeoL.ttf') format('truetype');
   }
   @font-face {
     font-family: 'AppleSdGothicNeoBold';
     font-style: bold;
     font-weight:700;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
   }
 h1{
   text-align: center;

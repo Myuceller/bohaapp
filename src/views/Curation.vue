@@ -57,13 +57,13 @@ export default {
     font-family: 'gmarcketsansbold';
     font-style: bold;
     font-weight: 800;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
   }
 @font-face {
   font-family: 'applesdgothic';
   font-style: normal;
   font-weight: 800;
-  src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
+  src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
 }
 #title{
   font-size: 23px;

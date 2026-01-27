@@ -4,8 +4,8 @@
     <div id="background"></div>
     <div>
       <div>
-        <img :src="`https://bohaapp.s3.ap-northeast-2.amazonaws.com/${game.engname}_thumbnail.jpg`"
-              onError="this.src='https://bohaapp.s3.ap-northeast-2.amazonaws.com/error.jpg'" 
+        <img :src="`https://boha-app.s3.ap-southeast-2.amazonaws.com/${game.engname}_thumbnail.jpg`"
+              onError="this.src='https://boha-app.s3.ap-southeast-2.amazonaws.com/error.jpg'" 
               alt="">
         <div class="background">
           <div v-if="game.state" id="state" :style="{backgroundColor:color , color:fontcolor}"><p><b>{{game.state}}</b></p></div>
@@ -46,9 +46,9 @@
     </div>
     <div id="photo">
       <p class="subinfo gmarcketbold">게임 상세 사진</p>
-      <img :src="`https://bohaapp.s3.ap-northeast-2.amazonaws.com/${game.engname}_1.jpg`"
+      <img :src="`https://boha-app.s3.ap-southeast-2.amazonaws.com/${game.engname}_1.jpg`"
            alt="">
-      <img :src="`https://bohaapp.s3.ap-northeast-2.amazonaws.com/${game.engname}_2.jpg`"
+      <img :src="`https://boha-app.s3.ap-southeast-2.amazonaws.com/${game.engname}_2.jpg`"
            alt="">
     </div>
   </div>
@@ -130,19 +130,19 @@ export default {
     font-family: 'gmarcketsans';
     font-style: normal;
     font-weight: 800;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFMedium.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/GmarketSansTTFMedium.ttf') format('truetype');
   }
   @font-face {
     font-family: 'gmarcketsansbold';
     font-style: bold;
     font-weight: 800;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
   }
   @font-face {
     font-family: 'applesdgothic';
     font-style: normal;
     font-weight: 800;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
   }
   img {
     position:relative;

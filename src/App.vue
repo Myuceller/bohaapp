@@ -151,13 +151,13 @@ export default {
     font-family: 'gmarcketsans';
     font-style: bold;
     font-weight: 800;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
   }
   @font-face {
     font-family: 'AppleSdGothicNeoBold';
     font-style: bold;
     font-weight:700;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
   }
   .searchItem{
     left:0;

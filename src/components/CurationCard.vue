@@ -2,8 +2,8 @@
   <div id="container">
     <div id="imgcontainer">
       <div v-for="(game,i) in games" :key="i" id="thumbnails">
-        <img :src="`https://bohaapp.s3.ap-northeast-2.amazonaws.com/${game.engname}_thumbnail.jpg`"
-             onerror="this.src='https://bohaapp.s3.ap-northeast-2.amazonaws.com/error.jpg'"
+        <img :src="`https://boha-app.s3.ap-southeast-2.amazonaws.com/${game.engname}_thumbnail.jpg`"
+             onerror="this.src='https://boha-app.s3.ap-southeast-2.amazonaws.com/error.jpg'"
              alt="">
       </div>
     </div>
@@ -48,13 +48,13 @@ export default {
     font-family: 'gmarcketsansbold';
     font-style: bold;
     font-weight: 800;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
   }
   @font-face {
     font-family: 'applesdgothic';
     font-style: normal;
     font-weight: 800;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
   }
   .gmarcketsansbold{
     font-family: gmarcketsansbold;
