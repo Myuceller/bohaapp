@@ -1,8 +1,6 @@
 # 보드게임하자 (bohaapp)
 
-보드게임 카페용 게임 큐레이션/목록/상세를 제공하는 웹페이지 입니다.
-Front -> Vue 2 + Vuetify
-Back -> Express + MongoDB(Mongoose)
+보드게임 카페용 게임 큐레이션/목록/상세를 제공하는 풀스택 앱입니다. 프런트는 Vue 2 + Vuetify, 백엔드는 Express + MongoDB(Mongoose)로 구성되어 있습니다.
 
 ## 주요 기능
 - 큐레이션별 게임 리스트 제공 (인기/추천 등)
@@ -19,7 +17,7 @@ bohaapp-1/
 
 ## 기술 스택
 - Frontend: Vue 2, Vue Router, Vuex, Vuetify, Axios, vue-infinite-loading
-- Backend: Express, Mongoose, multer, AWS S3
+- Backend: Express, Mongoose, multer(+S3), dotenv, cors
 - Storage/Assets: AWS S3 (썸네일/폰트 등)
 
 ## 빠른 시작

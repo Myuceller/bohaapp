@@ -12,7 +12,6 @@ const curationRouter = require('./routes/curation');
 const Mongoose  = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const history = require('connect-history-api-fallback');
 
 const app = express();
 
@@ -28,8 +27,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/public')));
-
-app.use(history());
 app.use('/users', usersRouter);
 app.use('/games', gameRouter);
 app.use('/curation',curationRouter);
@@ -44,7 +41,6 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-app.use(history({ verbose: true, index: '/'}));
 aws.config.region = 'ap-northeast-2'
 // error handler
 app.use(function(err, req, res, next) {
@@ -63,4 +59,3 @@ Mongoose.connect(process.env.MONGO_URI)
 .catch(err=>console.log(err));
 
 module.exports = app;
-
