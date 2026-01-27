@@ -1,8 +1,8 @@
 <template>
   <div id="container">
-    <img :src="`https://bohaapp.s3.ap-northeast-2.amazonaws.com/${game.engname}_thumbnail.jpg`"
+    <img :src="`https://boha-app.s3.ap-southeast-2.amazonaws.com/${game.engname}_thumbnail.jpg`"
          alt=""
-         onerror="this.src='https://bohaapp.s3.ap-northeast-2.amazonaws.com/error.jpg'">
+         onerror="this.src='https://boha-app.s3.ap-southeast-2.amazonaws.com/error.jpg'">
     <div v-if="game.state" id="state" class="gmarcketsansbold" :style="{backgroundColor:color , color:fontcolor}">{{game.state}}</div> 
     <div class="gameinfo">
       <p id="gametitle" class="gmarcketsansbold">{{game.korname}}</p>
@@ -61,13 +61,13 @@ export default {
     font-family: 'gmarcketsansbold';
     font-style: bold;
     font-weight: 800;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/GmarketSansTTFBold.ttf') format('truetype');
   }
   @font-face {
     font-family: 'applesdgothic';
     font-style: normal;
     font-weight: 800;
-    src: url('https://bohaapp.s3.ap-northeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
+    src: url('https://boha-app.s3.ap-southeast-2.amazonaws.com/font/AppleSDGothicNeoB.ttf') format('truetype');
   }
   .gmarcketsansbold{
     font-family: gmarcketsansbold;
