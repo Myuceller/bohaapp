@@ -3,28 +3,28 @@ FROM node:20-bullseye-slim AS build
 WORKDIR /app
 
 # Install frontend deps
-COPY front/package.json front/package-lock.json ./front/
-RUN cd front && npm install
+COPY package.json package-lock.json ./
+RUN npm install
 
 # Build frontend (needs legacy OpenSSL provider for webpack 4)
-COPY front ./front
-RUN mkdir -p /app/back/public
+COPY . .
+RUN mkdir -p /app/backend/public
 ENV NODE_OPTIONS=--openssl-legacy-provider
-RUN cd front && npm run build
+RUN npm run build
 
 FROM node:20-bullseye-slim
 
 WORKDIR /app
 
 # Install backend deps
-COPY back/package.json back/package-lock.json ./back/
-RUN cd back && npm ci --omit=dev
+COPY backend/package.json backend/package-lock.json ./backend/
+RUN cd backend && npm ci --omit=dev
 
 # Copy backend source and built frontend assets
-COPY back ./back
-COPY --from=build /app/back/public /app/back/public
+COPY backend ./backend
+COPY --from=build /app/backend/public /app/backend/public
 
 ENV NODE_ENV=production
 EXPOSE 3000
 
-CMD ["node", "back/bin/www"]
+CMD ["node", "backend/bin/www"]
