@@ -115,7 +115,7 @@ export default {
     infiniteHandler($state){
       console.log("hello infiniteHandler on",$state);
       // axios.get("http://127.0.0.1:3000/games/page",{
-      this.$http.get("/games/page",{
+      this.$api.get("/games/page",{
         params:{
           page:this.page
         }
@@ -153,7 +153,7 @@ export default {
     //     console.log(err);
     //   })
     // axios.get('http://127.0.0.1:3000/games/page')
-    this.$http.get('/games/page')
+    this.$api.get('/games/page')
     .then(res=>{
       console.log("get games/page:",res);
       this.games = res.data;
