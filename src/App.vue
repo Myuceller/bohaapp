@@ -117,7 +117,7 @@ export default {
     },
     routeToCuration(curationName){
       // axios.get('http://127.0.0.1:3000/curation/name',{params:curationName})
-      this.$http.get('/curation/name',{params:curationName})
+      this.$api.get('/curation/name',{params:curationName})
       .then(res=>{
         console.log(res);
         this.$router.push({name:'Games',query:{games:res.data.games,detail:res.data.detail}})
@@ -129,14 +129,14 @@ export default {
   },
   created(){
     // axios.get('http://127.0.0.1:3000/games/all')
-    this.$http.get('/games/all')
+    this.$api.get('/games/all')
       .then(res=>{
         this.$store.state.games = this.games = res.data.sort((a,b) => (a.korname > b.korname) ? 1 : ((b.korname > a.korname) ? -1 : 0))
         this.$store.dispatch('GetGames',res.data);
       })
       .catch(err=>console.log(err))
     // axios.get('http://127.0.0.1:3000/curation')
-    this.$http.get('/curation')
+    this.$api.get('/curation')
       .then(res=>{
         console.log('app.vue에서 mounted로 axios.get /curation res:',res);
         this.$store.dispatch('GetCurations',res.data.data);
