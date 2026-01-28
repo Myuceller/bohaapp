@@ -88,6 +88,9 @@ export default {
   methods:{
     ...mapMutations(['getGames,getCurations']),
     ...mapActions(['GetGames,GetCurations']),
+    GoToHome() {
+      this.$router.push({ name: 'Home' }).catch(() => {});
+    },
     typing(e){
       this.gameInput = e.target.value;
     },

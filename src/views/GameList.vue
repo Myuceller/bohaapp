@@ -1,37 +1,99 @@
 <template>
   <div class="home">
-    <div id="filter">
-      <div>
-        인원 :
-        <label for="2">2</label><input type="checkbox" value="2" v-model="players">
-        <label for="3">3</label><input type="checkbox" value="3" v-model="players">
-        <label for="4">4</label><input type="checkbox" value="4" v-model="players">
-        <label for="5">5</label><input type="checkbox" value="5" v-model="players">
-        <label for="6">6+</label><input type="checkbox" value="6" v-model="players">
+    <div id="filter" class="filters">
+      <div class="filter-group">
+        <div class="filter-title">인원</div>
+        <div class="filter-options">
+          <label class="filter-chip">
+            <input type="checkbox" value="2" v-model="players">
+            <span>2</span>
+          </label>
+          <label class="filter-chip">
+            <input type="checkbox" value="3" v-model="players">
+            <span>3</span>
+          </label>
+          <label class="filter-chip">
+            <input type="checkbox" value="4" v-model="players">
+            <span>4</span>
+          </label>
+          <label class="filter-chip">
+            <input type="checkbox" value="5" v-model="players">
+            <span>5</span>
+          </label>
+          <label class="filter-chip">
+            <input type="checkbox" value="6" v-model="players">
+            <span>6+</span>
+          </label>
+        </div>
       </div>
-      <div>
-        장르 :
-        <label for="전략">전략</label><input type="checkbox" value="전략" v-model="genre">
-        <label for="추리">추리</label><input type="checkbox" value="추리" v-model="genre">
-        <label for="파티">파티</label><input type="checkbox" value="파티" v-model="genre">
-        <label for="블러핑">블러핑</label><input type="checkbox" value="블러핑" v-model="genre">
-        <label for="협동">협동</label><input type="checkbox" value="협동" v-model="genre">
+      <div class="filter-group">
+        <div class="filter-title">장르</div>
+        <div class="filter-options">
+          <label class="filter-chip">
+            <input type="checkbox" value="전략" v-model="genre">
+            <span>전략</span>
+          </label>
+          <label class="filter-chip">
+            <input type="checkbox" value="추리" v-model="genre">
+            <span>추리</span>
+          </label>
+          <label class="filter-chip">
+            <input type="checkbox" value="파티" v-model="genre">
+            <span>파티</span>
+          </label>
+          <label class="filter-chip">
+            <input type="checkbox" value="블러핑" v-model="genre">
+            <span>블러핑</span>
+          </label>
+          <label class="filter-chip">
+            <input type="checkbox" value="협동" v-model="genre">
+            <span>협동</span>
+          </label>
+        </div>
       </div>
-      <div>
-        난이도 :
-        <label for="easy">easy</label><input type="checkbox" value="easy" v-model="difficulty">
-        <label for="normal">normal</label><input type="checkbox" value="normal" v-model="difficulty">
-        <label for="hard">hard</label><input type="checkbox" value="hard" v-model="difficulty">
-        <label for="expert">expert</label><input type="checkbox" value="expert" v-model="difficulty">
+      <div class="filter-group">
+        <div class="filter-title">난이도</div>
+        <div class="filter-options">
+          <label class="filter-chip tone-easy">
+            <input type="checkbox" value="easy" v-model="difficulty">
+            <span>easy</span>
+          </label>
+          <label class="filter-chip tone-normal">
+            <input type="checkbox" value="normal" v-model="difficulty">
+            <span>normal</span>
+          </label>
+          <label class="filter-chip tone-hard">
+            <input type="checkbox" value="hard" v-model="difficulty">
+            <span>hard</span>
+          </label>
+          <label class="filter-chip tone-expert">
+            <input type="checkbox" value="expert" v-model="difficulty">
+            <span>expert</span>
+          </label>
+        </div>
       </div>
-      <div>
-        상태 :
-        <label for="new">new</label><input type="checkbox" value="new" v-model="state">
-        <label for="best">best</label><input type="checkbox" value="best" v-model="state">
-        <label for="hot">hot</label><input type="checkbox" value="hot" v-model="state">
+      <div class="filter-group">
+        <div class="filter-title">상태</div>
+        <div class="filter-options">
+          <label class="filter-chip">
+            <input type="checkbox" value="new" v-model="state">
+            <span>new</span>
+          </label>
+          <label class="filter-chip">
+            <input type="checkbox" value="best" v-model="state">
+            <span>best</span>
+          </label>
+          <label class="filter-chip">
+            <input type="checkbox" value="hot" v-model="state">
+            <span>hot</span>
+          </label>
+        </div>
       </div>
-      <div>
-        누른것: {{players}} {{genre}} {{difficulty}} {{state}}
+      <div class="filter-summary">
+        <span class="summary-label">선택</span>
+        <span class="summary-values">
+          {{ summaryPlayers }} {{ summaryGenre }} {{ summaryDifficulty }} {{ summaryState }}
+        </span>
       </div>
     </div>
     <div v-for="(game,i) in games" :key="i" class="gamecards">
@@ -62,6 +124,24 @@ export default {
       difficulty:[],
       state:[],
       page:1,
+    }
+  },
+  computed: {
+    summaryPlayers() {
+      if (!this.players.length) return '';
+      return this.players.map((v) => `${v}인`).join(', ');
+    },
+    summaryGenre() {
+      if (!this.genre.length) return '';
+      return this.genre.join(', ');
+    },
+    summaryDifficulty() {
+      if (!this.difficulty.length) return '';
+      return this.difficulty.join(', ');
+    },
+    summaryState() {
+      if (!this.state.length) return '';
+      return this.state.join(', ');
     }
   },
   methods:{
@@ -182,5 +262,86 @@ export default {
     margin-top:42px;
     display: flex;
     justify-content: center;
+  }
+  .filters{
+    margin: 16px 16px 8px;
+    padding: 16px 14px 18px;
+    border-radius: 14px;
+    background: #eef4ff;
+    box-shadow: none;
+    border: 1px solid rgba(51, 121, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    font-family: applesdgothic;
+  }
+  .filter-group{
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    align-items: start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .filter-title{
+    font-size: 13px;
+    color: #1f3a6b;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    margin-top: 4px;
+  }
+  .filter-options{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .filter-chip{
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .filter-chip input{
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .filter-chip span{
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    line-height: 1;
+    background: #ffffff;
+    color: #1f3a6b;
+    border: 1px solid rgba(51, 121, 255, 0.2);
+    box-shadow: none;
+    transition: all 0.2s ease;
+    text-transform: lowercase;
+  }
+  .filter-chip input:checked + span{
+    background: #3379ff;
+    color: #ffffff;
+    border-color: #3379ff;
+    box-shadow: none;
+    transform: translateY(-1px);
+  }
+  .filter-chip.tone-easy input:checked + span{ background: #09c761; border-color: #09c761; }
+  .filter-chip.tone-normal input:checked + span{ background: #ffa412; border-color: #ffa412; }
+  .filter-chip.tone-hard input:checked + span{ background: #ff432b; border-color: #ff432b; }
+  .filter-chip.tone-expert input:checked + span{ background: #76058b; border-color: #76058b; }
+  .filter-summary{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 12px;
+    color: #4a5c7a;
+    margin-top: 6px;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(51, 121, 255, 0.25);
+  }
+  .summary-label{
+    font-weight: 700;
+    color: #1f3a6b;
+  }
+  .summary-values{
+    color: #5a6f94;
   }
 </style>

@@ -73,7 +73,7 @@ export default {
     },
     routeToCuration(curationName){
       // axios.get('http://127.0.0.1:3000/curation/name',{params:curationName})
-      this.$http.get('/curation/name',{params:curationName})
+      this.$api.get('/curation/name',{params:curationName})
       .then(res=>{
         console.log(res);
         this.$router.push({name:'Games',query:{games:res.data.games,detail:res.data.detail}})

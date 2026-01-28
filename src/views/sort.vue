@@ -39,7 +39,7 @@ export default {
     // console.log('this.$route.params',this.$route.query.value);
     let game = this.$route.query;
     // axios.get('http://127.0.0.1:3000/games',{params:{value:game.value , key:game.key}})
-    this.$http.get('/games',{params:{value:game.value , key:game.key}})
+    this.$api.get('/games',{params:{value:game.value , key:game.key}})
     .then(res=>{
       console.log(res);
       this.games = res.data.games.sort((a,b)=>(a.korname>b.korname)?1:-1)

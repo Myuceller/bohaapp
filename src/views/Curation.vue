@@ -4,7 +4,7 @@
       <p id="title" style="font-family:gmarcketsansbold;">보드게임하자 큐레이션 리스트</p>
       <p style="margin-left:15px;font-family:applesdgothic;" class="applesdgothic">보드게임하자의 게임마스터들이 100개가 넘는 게임들을 직접 해보며 엄선한 큐레이션을 확인해보세요!</p>
     </div>
-    <div v-for="(curation,i) in curations" :key="i" id="curations">
+    <div v-for="(curation,i) in curationsList" :key="i" id="curations">
       <div @click="RouteToCurationinfo(curation)"><curation-card :curation="curation"></curation-card></div>
     </div>
   </div>
@@ -12,15 +12,18 @@
 
 <script>
 import CurationCard from '../components/CurationCard.vue';
-import { mapMutations } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
 
 export default {
   components:{
     CurationCard
   },
-  data(){
-    return {
-      curations:this.$store.state.curations
+  computed: {
+    ...mapState(['curations']),
+    curationsList() {
+      if (Array.isArray(this.curations)) return this.curations;
+      if (this.curations && Array.isArray(this.curations.data)) return this.curations.data;
+      return [];
     }
   },
   methods:{

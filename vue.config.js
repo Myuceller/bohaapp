@@ -15,11 +15,15 @@ module.exports = {
   outputDir: "dist",
   devServer: {
     historyApiFallback: true,
-    proxy: {
-      "/api": {
-        target: "http://localhost:3000",
-        changeOrigin: true
-      }
-    }
+    ...(process.env.VERCEL
+      ? {}
+      : {
+          proxy: {
+            "/api": {
+              target: "http://localhost:3000",
+              changeOrigin: true
+            }
+          }
+        })
   }
 }

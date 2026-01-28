@@ -26,7 +26,7 @@
           <span v-else>{{game.mintime}}</span>
         </div>
         <div class="infoitem" id="genre">
-          <span v-for="(genre,index) in game.genre" :key="index">{{genre}}</span>&nbsp;
+          <span>{{ formattedGenre }}</span>
         </div>
         <div class="infoitem" id="difficulty" v-bind:style="{ backgroundColor: backcolor }">
           {{game.difficulty}}
@@ -79,10 +79,19 @@ export default {
       // }
     }
   },
+  watch: {
+    game: {
+      handler() {
+        this.changeColor();
+        this.changeStateColor();
+      },
+      deep: true
+    }
+  },
   mounted(){
     let gameid = this.$route.query.gameid;
     // axios.get('http://127.0.0.1:3000/games/one',{
-    this.$http.get('/games/one',{
+    this.$api.get('/games/one',{
       params:{
         ids: gameid
       }
@@ -92,10 +101,32 @@ export default {
     }).catch(err=>{
       console.log(err);
     })
-    this.changeColor();
-    this.changeStateColor();
   },
   computed: {
+    formattedGenre() {
+      const genre = this.game && this.game.genre;
+      if (Array.isArray(genre)) {
+        if (genre.length === 1 && typeof genre[0] === 'string' && genre[0].trim().startsWith('[')) {
+          try {
+            const parsed = JSON.parse(genre[0]);
+            if (Array.isArray(parsed)) return parsed.join(',');
+          } catch (err) {
+            return genre[0].replace(/[\[\]\"]/g, '').replace(/\s+/g, '');
+          }
+        }
+        return genre.join(',');
+      }
+      if (typeof genre === 'string') {
+        try {
+          const parsed = JSON.parse(genre);
+          if (Array.isArray(parsed)) return parsed.join(',');
+        } catch (err) {
+          return genre.replace(/[\[\]\"]/g, '').replace(/\s+/g, '');
+        }
+        return genre;
+      }
+      return '';
+    },
     computedColor: function () {
       return this.color;
     }

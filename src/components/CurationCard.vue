@@ -27,10 +27,11 @@ export default {
     // console.log("curation card mounted() 호출, curation Props:",this.curation)
     // console.log('this.curation.games:',this.curation.games);
     // axios.get("http://127.0.0.1:3000/games/some",{
-    this.$http.get('/games/some',{
-      params:{
-        ids: this.curation.games
-      }
+    const ids = Array.isArray(this.curation.games)
+      ? this.curation.games.join(',')
+      : this.curation.games;
+    this.$api.get('/games/some', {
+      params: { ids }
     })
     .then(res=>{
       this.games = res.data;

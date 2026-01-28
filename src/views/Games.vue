@@ -33,13 +33,12 @@ export default {
   },
   mounted(){
     //localStorage.vuex =>games
-    let gameids = this.$route.query.games;
+    const gameids = this.$route.query.games;
+    const ids = Array.isArray(gameids) ? gameids.join(',') : gameids;
 
     // axios.get('http://127.0.0.1:3000/games/some',{
-    this.$http.get('/games/some',{
-      params:{
-        ids: gameids
-      }
+    this.$api.get('/games/some', {
+      params: { ids }
     }).then(res=>{
       this.games = res.data;
       console.log("this.games",this.games)
