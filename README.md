@@ -1,58 +1,72 @@
 # 보드게임하자 (bohaapp)
 
-보드게임 카페용 게임 큐레이션/목록/상세를 제공하는 풀스택 앱입니다. 프런트는 Vue 2 + Vuetify, 백엔드는 Express + MongoDB(Mongoose)로 구성되어 있습니다.
+보드게임 카페용 게임 큐레이션/목록/상세를 제공하는 웹페이지입니다.
+프런트는 Vue 2 + Vuetify,
+백엔드는 Vercel Serverless + MongoDB(Mongoose)로 구성되어 있습니다.
+
+## 주요 화면
+- 홈(큐레이션 바로가기)
+  - (여기에 홈 페이지 스크린샷)
+- 게임 목록 + 필터
+  - (여기에 게임 목록/필터 스크린샷)
+- 큐레이션 리스트
+  - (여기에 큐레이션 리스트 스크린샷)
+- 게임 상세
+  - (여기에 게임 상세 스크린샷)
 
 ## 주요 기능
-- 큐레이션별 게임 리스트 제공 (인기/추천 등)
+- 큐레이션별 게임 리스트 제공 (인기/추천)
 - 게임 목록 무한 스크롤 및 필터(인원/장르/난이도/상태)
 - 게임 상세 정보(플레이 인원, 시간, 난이도, 설명, 코멘트)
-- 게임/큐레이션 관리용 어드민 화면(코드 포함, 라우팅 연결은 별도)
+- 이미지/폰트 S3 연동
 
 ## 구조
 ```
 bohaapp-1/
-  src/        # Vue 2 SPA 소스
+  src/        # Vue 2 SPA
   public/     # 정적 리소스
-  backend/    # (legacy) Express API 참고용
   api/        # Vercel Serverless Functions
 ```
 
 ## 기술 스택
 - Frontend: Vue 2, Vue Router, Vuex, Vuetify, Axios, vue-infinite-loading
-- Backend: Express, Mongoose, multer(+S3), dotenv, cors
-- Storage/Assets: AWS S3 (썸네일/폰트 등)
+- Backend: Vercel Serverless, Mongoose
+- Storage/Assets: AWS S3 (썸네일/폰트)
 
-## 빠른 시작
-### 1) 환경 변수 설정 (Vercel)
-Vercel 프로젝트 환경변수에 `MONGO_URI`를 설정합니다.
+## 빠른 시작 (로컬)
+### 1) 환경 변수
+`.env.local`에 `MONGO_URI` 설정
 
 ### 2) 의존성 설치
 ```
-# frontend (root)
 npm install
-
- 
 ```
 
-### 3) 개발 서버 실행
+### 3) 로컬 실행
+터미널 2개 필요
 ```
-# Vercel 로컬 실행
-# 1) vercel dev (API + 프론트)
-# 2) npm run serve (프론트)
+# API 서버 (로컬 전용)
+npm run api:dev
+```
+```
+# 프론트
+npm run serve
 ```
 
-### 4) 통합 실행(빌드 후 백엔드에서 서빙)
-프런트를 빌드하면 결과물이 `dist`에 생성됩니다.
-```
-npm run build
-```
+## 배포 (Vercel)
+
+## S3 업로드 규칙
+이미지는 S3 버킷 `boha-app` 루트에 업로드합니다.
+- 썸네일: `{engname}_thumbnail.jpg`
+- 상세 이미지: `{engname}_1.jpg`, `{engname}_2.jpg`
+- 폰트: `font/AppleSDGothicNeoB.ttf`, `font/GmarketSansTTFBold.ttf` 등
 
 ## API 개요 (요약)
 ### Games
 - `GET /api/games` (query: `key`, `value`) 난이도/인원/장르 필터
 - `GET /api/games/all` 게임 이름 리스트
 - `GET /api/games/page` 페이지네이션 (query: `page`)
-- `GET /api/games/some` 여러 게임 조회 (query: `ids[]`)
+- `GET /api/games/some` 여러 게임 조회 (query: `ids`)
 - `GET /api/games/one` 단일 게임 조회 (query: `ids`)
 - `POST /api/games` 게임 추가
 - `PUT /api/games` 게임 수정
@@ -73,8 +87,4 @@ npm run build
 
 ### Curation
 - `detail`
-- `games[]` (게임 ID 혹은 이름 목록)
-
-## 기타 메모
-- 프런트 라우터는 history 모드이며, Vercel은 `vercel.json`의 rewrite로 SPA 라우팅을 처리합니다.
-- 어드민 관련 뷰(`src/admin/*`)는 현재 라우터에 연결되어 있지 않습니다. 필요 시 라우터에 추가하세요.
+- `games[]` (게임 ID 목록)
