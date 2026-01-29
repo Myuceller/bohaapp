@@ -1,4 +1,5 @@
 # 보드게임하자 (bohaapp)
+https://bohaapp.vercel.app/
 
 보드게임 카페용 게임 큐레이션/목록/상세를 제공하는 웹페이지입니다.
 프런트는 Vue 2 + Vuetify,
@@ -6,13 +7,12 @@
 
 ## 주요 화면
 - 홈(큐레이션 바로가기)
-  - (여기에 홈 페이지 스크린샷)
+<img width="411" height="751" alt="스크린샷 2026-01-29 오후 2 57 49" src="https://github.com/user-attachments/assets/4fffbf90-0ba0-4aa0-9737-87fc6714dcdf" />
 - 게임 목록 + 필터
-  - (여기에 게임 목록/필터 스크린샷)
-- 큐레이션 리스트
-  - (여기에 큐레이션 리스트 스크린샷)
+<img width="412" height="747" alt="스크린샷 2026-01-29 오후 2 58 18" src="https://github.com/user-attachments/assets/d285fbf3-12d7-43bc-9402-1fb7f46d3801" />
 - 게임 상세
-  - (여기에 게임 상세 스크린샷)
+<img width="412" height="888" alt="스크린샷 2026-01-29 오후 2 58 49" src="https://github.com/user-attachments/assets/02b9ceba-ed32-4abb-88b0-311657d1cab7" />
+
 
 ## 주요 기능
 - 큐레이션별 게임 리스트 제공 (인기/추천)
